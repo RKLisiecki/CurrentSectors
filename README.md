@@ -1,2 +1,2 @@
-# CertainSectors
-Sector and national asset analysis supporting R functions and datasets collection
+# Current Sectors
+Functions and datasets collection supporting sector and national asset analysis in R.
