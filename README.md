@@ -1,4 +1,4 @@
 # Current Sectors
-Functions and datasets collection **supporting sector and national asset parametric technical analysis in R**.
+R functions and datasets **collection** on a mission to support stocks' parametric technical analysis across sectors and regions.
 
 
