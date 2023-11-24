@@ -44,4 +44,53 @@ Wykorzystane w nazewnictwie identyfikatorów wymagań skrótowce opierają się 
 | NF.Q.S.I.1 | Bezpieczeństwo - integralność danych zaciąganych z internetu | W istniejącym zakresie biblioteka w żaden sposób nie może zagwarantować poprawności danych zaciąganych z Internetu innej niż formalna | 1 | pozafunkcjonalne |
 | ... | ... | ... | ... | ... |
 
+### Nieformalna lista wymagań funkcjonalnych do doprecyzowania
+
+**Wyświetlanie dostępnych list zbiorczych**
+- Wyświetl tabelę spółek, ich tickerów, ich przemysłów, sektorów, giełd, państw, kapitalizacji rynkowej i poziomu floatu.
+- Wyświetl listę drzewa przemysłów, sektorów i podsektorów.
+- Wyświetl listę własnych zapisanych indeksów.
+  
+**Wyświetlanie przekrojów**
+- Wyświetl listę spółek danego przemysłu/sektora/podsektora w danym państwie.
+- Wyświetl listę spółek z własnego zapisanego przekroju wraz z informacją o jego zakresie.
+  
+**Zapis własnych przekrojów**
+- Zapisz dowolny własny niepusty przekrój – (np. przemysł transportowy i logistyczny w krajach Beneluksu) pod wybraną nazwą.
+- Zapisz własny przekrój z filtrem kapitalizacji rynkowej.
+- Zapisz własny przekrój z filtrem spółek o największym floacie.
+  
+**Wyszukiwanie z filtrem** 
+- Wyświetl wybrany przekrój z ograniczeniem do spółek, które są w top n największych kapitalizacji rynkowych tego przekroju.
+- Wyświetl wybrany przekrój z ograniczeniem do spółek, które mają float większy niż x % kapitalizacji rynkowej.
+  
+**Ściąganie list notowań spółek z API**
+- Zaktualizuj szeregi czasowe wybranego przekroju
+- Zaktualizuj szeregi czasowe podając listę spółek jako zwykły wektor tickerów (np. c(‘MSFT’, ‘AAPL’)).
+  
+**Sprawdzanie aktualności notowań w bazie**
+- Wyświetl listę spółek danego przekroju uszeregowaną od tych z najstarszym notowaniem zapisanym w bazie.
+  
+**Imputacja notowań (np. świątecznych)**
+- Zaimputuj (zsynchronizuj) puste wartości wybranego przekroju o tym samym początku i końcu notowań.
+  
+**Wyświetlanie wykresu stóp zwrotu**
+- Wyświetl wykres stóp zwrotu spółek z danego przekroju (zwykłych lub logarytmicznych).
+  
+**Parametryczne przeliczanie trendów wybranego przekroju**
+- Przelicz i zinterpretuj wskaźniki techniczne dla wybranej listy spółek a wynik wypisz do tabeli i/lub zapisz do pliku.
+  
+**Tworzenie własnego indeksu ważonego kapitalizacją**
+- Dla wybranego przekroju utwórz indeks ważony kapitalizacją rynkową.
+  
+**Zapis własnego indeksu ważonego kapitalizacją**
+- Zapisz szereg czasowy utworzonego indeksu pod nieużywanym (wymyślonym) tickerem, nową nazwą – w formacie zgodnym z zapisanymi notowaniami spółek.
+  
+**Wyświetlanie tabeli sktruktury sektorowej spółek wybranego przekroju**
+- Przelicz wskaźnik struktury i wyświetl tabelę udziałów oraz kapitalizacji łącznej w podziale na przemysły / sektory / podsektory.
+  
+**Wyświetlanie wykresu powierzchniowego struktury sektorowej spółek wybranego przekroju**
+- Na podstawie tabeli struktury sektorowej wyświetl wykres powierzchniowy.
+
+
 </details>
