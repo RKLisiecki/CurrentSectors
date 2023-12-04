@@ -6,7 +6,7 @@ An upcoming R library, which:
 - simplifies the process of stock quote data ingestion, organization and storage,
 - provides useful tools all across the board of financial time series data analysts' workflows.
 
-While there are a couple of industry and sector classifications (i.e. [GICS](https://www.msci.com/our-solutions/indexes/gics) and [ICB](https://www.lseg.com/en/ftse-russell/industry-classification-benchmark-icb)), Current Sectors relies on an internally corrected version of widely adopted [Wall Street journal company classification](https://www.wsj.com/market-data/quotes/company-list/) reconstructed as **such** [picture_available_after_reconstruction]. 
+While there are a couple of industry and sector classifications (i.e. [GICS](https://www.msci.com/our-solutions/indexes/gics) and [ICB](https://www.lseg.com/en/ftse-russell/industry-classification-benchmark-icb)), Current Sectors relies on the widely adopted [Yahoo Finance company classification](https://finance.yahoo.com/sectors).
 # Project documentation (PL)
 <details>
   <summary> Click to expand or contract </summary>
@@ -43,7 +43,7 @@ Wykorzystane w nazewnictwie identyfikatorów wymagań skrótowce opierają się 
 | NF.Q.S.I.1 | Bezpieczeństwo - integralność danych zaciąganych z internetu | W istniejącym zakresie biblioteka w żaden sposób nie może zagwarantować poprawności danych zaciąganych z Internetu innej niż formalna | 1 | pozafunkcjonalne |
 | ... | ... | ... | ... | ... |
 
-### Nieformalna lista wymagań funkcjonalnych do doprecyzowania
+### Wstępny zakres wymagań funkcjonalnych
 
 **Wyświetlanie dostępnych list zbiorczych**
 - Wyświetl tabelę spółek, ich tickerów, ich przemysłów, sektorów, giełd, państw, kapitalizacji rynkowej i poziomu floatu.
