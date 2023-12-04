@@ -48,7 +48,7 @@ Wykorzystane w nazewnictwie identyfikatorów wymagań skrótowce opierają się 
 **Wyświetlanie dostępnych list zbiorczych i przekrojów**
 - Wyświetl tabelę spółek, ich tickerów, ich przemysłów, sektorów, giełd, państw, najbardziej aktualnej kapitalizacji rynkowej i poziomu floatu.
 - Wyświetl listę drzewa przemysłów, sektorów i podsektorów.
-- Wyświetl listę spółek danego przemysłu/sektora/podsektora w danym państwie.
+- Wyświetl listę spółek danego przemysłu/sektora w danym państwie.
    
 **Wyszukiwanie z filtrem** 
 - Wyświetl wybrany przekrój z ograniczeniem do spółek, które są w top n największych kapitalizacji rynkowych tego przekroju.
@@ -65,9 +65,6 @@ Wykorzystane w nazewnictwie identyfikatorów wymagań skrótowce opierają się 
 
 **Wyświetlanie wykresu dynamiki sektorów wybranego państwa**
 - Dla danego zakresu czasowego wyświetl wykres zbiorczy z wykresami liniowymi dynamiki kapitalizacji wszystkich sektorów (początek okresu=100).
-
-**Wyświetlanie mapy ciepła sektorów wybranego państwa**
-- Dla danego zakresu czasowego, na wykresie powierzchniowym aktualnej struktury sektorowej państwa wyświetl mapę ciepła kolorowaną według dynamiki kapitalizacji sektora w tym okresie.
   
 **Ściąganie list notowań spółek z API**
 - Zaktualizuj szeregi czasowe wybranego przekroju lub całego państwa.
