@@ -64,6 +64,8 @@ Opis wymagań jest adekwatny dla użytkowników, którzy zainstalowali oraz zał
 funkcja listCompanies(country, sector)
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
+| F.DD.1 | Wyświetlanie i/lub zapis danych dołączonych | ... | 1 | Funkcjonalne |
+| F.DH.1 | Wyświetlanie plików pomocy | ... | 1 | Funkcjonalne |
 | F.DL.1 | Wyświetlanie i/lub zapis list spółek o zadanych atrybutach | Po wywołaniu odpowiedniej funkcji z parametrami tekstowymi nazwy kraju lub/i nazwy przemysłu (lub nazwy sektora) w konsoli prezentowany jest wierszami zbiór **nazw, symboli spółek, ich przemysłów, sektorów, krajów rejestracji** numeru ISIN waloru oraz **waluty kwotowania**. Wynik w postaci tabeli może być jednocześnie przez przypisanie przekierowany do zmiennej o typie `list` i klasie `data.frame`. W przypadku niewłaściwej parametryzacji przez użytkownika lub braku rezultatów, do konsoli zostanie zwrócony monit. | 1 | Funkcjonalne |
 | F.DL.1.2 | Wyświetlanie i/lub zapis list spółek o zadanych atrybutach oraz filtrze kapitalizacji rynkowej | Po wywołaniu tej samej funkcji, co w **F.DL.1.1** z dodatkowym, opcjonalnym parametrem liczbowym progowego **poziomu kapitalizacji rynkowej**  ten sam rezultat zostanie zawężony do spółek przekraczających określony poziom kapitalizacji rynkowej.  | 1 | Funkcjonalne |
 | ... | ... | ... | ... | ... |
