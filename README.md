@@ -45,8 +45,9 @@ Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano w oparci
 | NF.Q.S.I.1 | Bezpieczeństwo - integralność danych zawartych | Dane giełdowe zawarte w bibliotece sprawdzone są pod kątem poprawności formalnej oraz zmodyfikowane w stosunku do źródłowych tylko w aspekcie organizacji i składowania danych | 1 | pozafunkcjonalne |
 | NF.Q.S.I.1 | Bezpieczeństwo - integralność danych zaciąganych z internetu | W istniejącym zakresie biblioteka w żaden sposób nie może zagwarantować poprawności danych zaciąganych z Internetu innej niż formalna | 1 | pozafunkcjonalne |
 | ... | ... | ... | ... | ... |
+
 WORK
-DONE: [System Performance: resource utilization, time behavior] 
+DONE: [System Performance: resource utilization, time behavior]
 IN PROGRESS: [Security: confidentiality, integrity, accountability, authenticity]
 TO DO: [Reliability of functionalities: availability, fault tolerance, recoverability],
 [Usability: accessibility, learnability, ease of use],
