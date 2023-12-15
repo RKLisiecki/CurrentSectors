@@ -91,7 +91,17 @@ funkcja sIndicesTRCompChart(country1, country2, sector1, sector2) - wykres poró
 #### **Grupa nr 4 (STA):** - raport analizy technicznej grupy spółek sektora w państwie
 funkcja TAReport(country, sector)
 ## 3. Architektura oprogramowania
-
+Stos uruchomieniowy: 
+R 4.2.x + wraz z zainstalowaną biblioteką devtools lub remotes ORAZ zależnościami biblioteki - innymi bibliotekami R: xts, zoo, quantmod (być może też dplyr i ggplot2);
+system operacyjny Windows lub Linux lub OpenBSD lub MacOS;
+działające połączenie internetowe.
+Stos technologiczny:
+R 4.2.x + wraz z zainstalowanymi bibliotekami devtools, httr2, rvest, roxygen2, testhat, xts, zoo, quantmod, dplyr, ggplot2;
+klient Github Desktob lub inny klient Git;
+system operacyjny Windows lub Linux lub OpenBSD lub MacOS;
+działające połączenie internetowe.
 ## 4. Testy
-
+| Identyfikator | Nazwa | Opis | Wynik | Ostatnia wersja | Ostatnia data | Uwagi |
+| --- | --- | --- | --- | --- | --- | --- |
+| ... | ... | ... | ... | ... | --- | --- |
 </details>
