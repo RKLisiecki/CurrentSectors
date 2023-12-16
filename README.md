@@ -40,19 +40,19 @@ Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano w oparci
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
 | NF.Q.SP.1 | Wydajność biblioteki | Operacje dotyczące przetwarzania matematycznego danych *offline* na komputerze bądź serwerze użytkownika funkcje biblioteki wykonują możliwie najszybciej, z wykorzystaniem przetwarzania równoległego | 1 | pozafunkcjonalne |
-| NF.Q.SP.2 | Wydajność web-scrapingu | Operacje dotyczące zaciągania danych z API oraz stron znajdujących się w kontekście systemu funkcje biblioteki wykonują w dbałości o zachowanie norm powolności | 1 | pozafunkcjonalne |
+| NF.Q.SP.2 | Wydajność web-scrapingu | Operacje dotyczące zaciągania danych z API oraz stron znajdujących się w kontekście systemu funkcje biblioteki wykonują w dbałości o nieprzekracznie limitów API Yahoo Finance | 1 | pozafunkcjonalne |
 | NF.Q.S.C.1 | Bezpieczeństwo - poufność | Biblioteka w żaden sposób nie monitoruje, nie archiwizuje ani nie przesyła informacji o działalności użytkownika ponad to, co jest konieczne do spowalniania web-scrapingu | 1 | pozafunkcjonalne |
 | NF.Q.S.I.1 | Bezpieczeństwo - integralność danych zawartych | Dane giełdowe zawarte w bibliotece sprawdzone są pod kątem poprawności formalnej oraz zmodyfikowane w stosunku do źródłowych tylko w aspekcie organizacji i składowania danych | 1 | pozafunkcjonalne |
-| NF.Q.S.I.1 | Bezpieczeństwo - integralność danych zaciąganych z internetu | W istniejącym zakresie biblioteka w żaden sposób nie może zagwarantować poprawności danych zaciąganych z Internetu innej niż formalna | 1 | pozafunkcjonalne |
-| ... | ... | ... | ... | ... |
+| NF.Q.F.I.1 | Interoperacyjność | Biblioteka może współpracować z innymi bibliotekami środowiska R nawet w przypadków konfliktu nazw funkcji. Funkcje biblioteki dodawane są do ścieżki wyszukań po załadowaniu biblioteki. | 1 | pozafunkcjonalne |
+| NF.Q.R.A.1 | Dostępność | Dostępność zdalnego repozytorium biblioteki uwarunkowana jest uwarunkowana dostępnością usług Github (powyżej 99,7% czasu w roku) a skompilowana przez użytkownika biblioteka dostępna jest zawsze. | 1 | pozafunkcjonalne |
+| NF.Q.R.FT.1 | Odporność na błędy użytkowników | Działanie funkcji biblioteki jest uodpornione na większość najczęściej popełnianych błędów podczas wprowadzania danych przez użytkownika | 1 | pozafunkcjonalne |
+| NF.Q.R.FT.1 | Odporność na błędy bibliiotek skojarzonych i usług API | Funkcje obliczeniowe i graficzne biblioteki są odporne na nieprawidłowe działanie usług związanych z pozyskiwaniem danych z Internetu | 1 | pozafunkcjonalne |
+| NF.Q.U.A.1 | Przystępność | Biblioteka jest przystosowana do prezentowania pomocy w języku angielskim - w tym dla użytkowników niedowidzących, korzystających z czytników ekranu | 1 | pozafunkcjonalne |
+| NF.Q.U.L.1 | Łatwość przyswojenia | Biblioteka zawiera niewielką liczbę funkcji, na wysokim poziomie abstrakcji oraz co najwyżej kilku parametrach | 1 | pozafunkcjonalne |
+| NF.Q.U.EoU.1 | Łatwość użytkowania | Funkcje biblioteki mają intuicyjne nazwy oraz dostępne pliki pomocy zawierające przykłady użycia | 1 | pozafunkcjonalne |
+| NF.Q.P.A.1 | Przystosowawczość | Działanie biblioteki nie jest upośledzane poprzez zmieny sprzętu bądź systemu operacyjnego tak długo, jak wspierają one działanie środowiska R w odpowiedniej wersji | 1 | pozafunkcjonalne |
+| NF.Q.P.I.1 | Efektywność instalacji | Biblioteka może zostać zarówno zainstalowana, jak też odinstalowana poprzez uruchomienie jednej linijki kodu | 1 | pozafunkcjonalne |
 
-WORK
-DONE: [System Performance: resource utilization, time behavior]
-IN PROGRESS: [Security: confidentiality, integrity, accountability, authenticity]
-TO DO: [Reliability of functionalities: availability, fault tolerance, recoverability],
-[Usability: accessibility, learnability, ease of use],
-[Maintainability: reusability, analyzability, changeability, testability],
-[Portability: adaptability, installability, replaceability].
 
 ### Wymagania funkcjonalne
 
