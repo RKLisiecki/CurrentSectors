@@ -31,11 +31,13 @@ biblioteka języka R wspomagająca analizę notowań spółek giełdowych w prze
 **zastrzeżenie Fair Use** - dotyczące wykorzystania żródeł klasyfikacji spółek oraz danych giełdowych jedynie do celów edukacyjnych oraz ograniczające ich wykorzystanie w materiałach wtórnych bazujących na opisywanym oprogramowaniu.
 
 ## 3. Specyfikacja wymagań
-Wykorzystane w nazewnictwie identyfikatorów wymagań skrótowce opierają się na angielskim brzmieniu słów. 
+Wykorzystane w nazewnictwie identyfikatorów wymagań skrótowce opierają się na angielskim brzmieniu słów:
+- dotyczących kryteriów jakości oprogramowania (**system performance**; **security**: confidentiality, integrity; **functionality**: interoperability; **reliability**: availability, fault tolerance; **usability**: accessibility, learnability, ease of use; **portability**: adaptability, installability; **maintainability**: testability)
+- określeń funkcjonalności (display datasets; display help; display lists; update time series; sector structure; sector time series; sector technical analysis). 
 
 ### Wymagania pozfunkcjonalne
 
-Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano w oparciu o standard **ISO/IEC 25010:2011**.
+Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano w oparciu o standard **ISO/IEC 25010:2011**. Uwzględniono tylko subiektywnie najważniejsze kryteria.
 
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
@@ -52,46 +54,47 @@ Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano w oparci
 | NF.Q.U.EoU.1 | Łatwość użytkowania | Funkcje biblioteki mają intuicyjne nazwy oraz dostępne pliki pomocy zawierające przykłady użycia | 1 | pozafunkcjonalne |
 | NF.Q.P.A.1 | Przystosowawczość | Działanie biblioteki nie jest upośledzane poprzez zmieny sprzętu bądź systemu operacyjnego tak długo, jak wspierają one działanie środowiska R w odpowiedniej wersji | 1 | pozafunkcjonalne |
 | NF.Q.P.I.1 | Efektywność instalacji | Biblioteka może zostać zarówno zainstalowana, jak też odinstalowana poprzez uruchomienie jednej linijki kodu | 1 | pozafunkcjonalne |
+| NF.Q.M.T.1 | Testowalność | Funkcje bibilioteki posiadają niezawierające sprzeczności kryteria akceptowalności zwracanych rezultatów | 1 | pozafunkcjonalne |
 
 
 ### Wymagania funkcjonalne
 
 Opis wymagań jest adekwatny dla użytkowników, którzy zainstalowali oraz załadowali bibliotekę CurrentSectors do własnego środowiska R, po czym wywołują w konsoli odpowiednie funkcje opisane w dokumentacji użytkownika.
 
-#### **Grupa nr 1 (DL):** wyświetlanie i/lub zapis do zmiennej list zbiorczych
+#### **Grupa nr 1 (display):** wyświetlanie i/lub zapis do zmiennej list zbiorczych
 ++ wyświetlanie i zapis dołączonych danych zawartych w całości funkcja saveDataLocally(path) - wymaganie opisujące wywołanie danych po nazwie zawartej w dokumentacji pakietu
 
-funkcja listCompanies(country, sector)
+
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
 | F.DD.1 | Wyświetlanie i/lub zapis danych dołączonych | ... | 1 | Funkcjonalne |
 | F.DH.1 | Wyświetlanie plików pomocy | ... | 1 | Funkcjonalne |
-| F.DL.1 | Wyświetlanie i/lub zapis list spółek o zadanych atrybutach | Po wywołaniu odpowiedniej funkcji z parametrami tekstowymi nazwy kraju lub/i nazwy przemysłu (lub nazwy sektora) w konsoli prezentowany jest wierszami zbiór **nazw, symboli spółek, ich przemysłów, sektorów, krajów rejestracji** numeru ISIN waloru oraz **waluty kwotowania**. Wynik w postaci tabeli może być jednocześnie przez przypisanie przekierowany do zmiennej o typie `list` i klasie `data.frame`. W przypadku niewłaściwej parametryzacji przez użytkownika lub braku rezultatów, do konsoli zostanie zwrócony monit. | 1 | Funkcjonalne |
-| F.DL.1.2 | Wyświetlanie i/lub zapis list spółek o zadanych atrybutach oraz filtrze kapitalizacji rynkowej | Po wywołaniu tej samej funkcji, co w **F.DL.1.1** z dodatkowym, opcjonalnym parametrem liczbowym progowego **poziomu kapitalizacji rynkowej**  ten sam rezultat zostanie zawężony do spółek przekraczających określony poziom kapitalizacji rynkowej.  | 1 | Funkcjonalne |
-| ... | ... | ... | ... | ... |
+| F.DL.1 | Wyświetlanie i/lub zapis list spółek o zadanych atrybutach (funkcja `listCompanies(country, sector, industry,...)`) | Po wywołaniu funkcji z opcjonalnymi parametrami tekstowymi nazwy kraju lub/i nazwy przemysłu (lub nazwy sektora) w konsoli prezentowany jest wierszami zbiór **nazw, symboli spółek, ich przemysłów, sektorów, krajów rejestracji** oraz **waluty kwotowania**. Wynik w postaci tabeli może być jednocześnie przez przypisanie przekierowywany do zmiennej o typie `list` i klasie `data.frame`. W przypadku niewłaściwej parametryzacji przez użytkownika lub braku rezultatów, do konsoli zostanie zwrócony monit. | 1 | Funkcjonalne |
+| F.DL.1.2 | Wyświetlanie i/lub zapis list spółek o zadanych atrybutach oraz filtrze liczbowym najniższej progowej kapitalizacji rynkowej (funkcja `listCompanies(country, sector, industry, market_cap_thresh)`) | Po wywołaniu tej samej funkcji, co w **F.DL.1.1** z dodatkowym, opcjonalnym parametrem liczbowym progowego **poziomu kapitalizacji rynkowej**  ten sam rezultat zostanie zawężony do spółek przekraczających określony poziom kapitalizacji rynkowej.  | 1 | Funkcjonalne |
 
-#### **Grupa nr 2 (UTS&F):** aktualizacja szeregów czasowych
-funkcja updateData(path_to_local_data)
+#### **Grupa nr 2 (database):** zapis i aktualizacja szeregów czasowych
+
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
-| ... | ... | ... | ... | ... |
+| ... | Zapis danych biblioteki na dysku użytkownika (funkcja `saveData(path)`) | ... | ... | ... |
+| ... | Aktualizowanie bazy plików csv użytkownika (funkcja `updateData(path_to_local_data)`) | ... | ... | ... |
 
 
-#### **Grupa nr 3 (SS):** analiza struktury sektorowej walorów w danym państwie
+#### **Grupa nr 3 (sector structures):** analiza struktury sektorowej walorów w danym państwie
 funkcje sStructure(country), sStructureChart(country) - tabela i wykres struktury kapitalizacji spółek w państwie
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
 | ... | ... | ... | ... | ... |
 
 
-#### **Grupa nr 3 (STS):** analiza szeregów czasowych sektorów
+#### **Grupa nr 3 (sector time series):** analiza szeregów czasowych sektorów
 funkcje sIndices(country | sector), sIndicesChart(...) - wartość kapitalizacji w czasie - tabela i wykres
 funkcja sIndicesTRCompChart(country1, country2, sector1, sector2) - wykres porównawczy indeksów jednopodstawowych kapitalizacji t1=100
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
 | ... | ... | ... | ... | ... |
 
-#### **Grupa nr 4 (STA):** - raport analizy technicznej grupy spółek sektora w państwie
+#### **Grupa nr 4 (sector technical analysis):** - raport analizy technicznej grupy spółek sektora w państwie
 funkcja TAReport(country, sector)
 ## 3. Architektura oprogramowania
 Stos uruchomieniowy: 
