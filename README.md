@@ -24,7 +24,7 @@ biblioteka języka R wspomagająca analizę notowań spółek giełdowych w prze
 ## 2. Prawa autorskie
 ### Autorzy:
 **Ryszard Karol Lisiecki** – pomysłodawca, projektant, programista, tester;
-**Michał Bartkiewicz** – kontroler jakości, programista, tester.
+**Michał Bartkiewicz** – tester wdrożeniowy.
 
 ### Warunki licencyjne: 
 
