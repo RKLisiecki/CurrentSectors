@@ -36,7 +36,7 @@ biblioteka języka R wspomagająca analizę notowań spółek giełdowych w prze
 ## 3. Specyfikacja wymagań
 Wykorzystane w nazewnictwie identyfikatorów wymagań skrótowce opierają się na angielskim brzmieniu słów:
 - dotyczących kryteriów jakości oprogramowania (**system performance**; **security**: confidentiality, integrity; **functionality**: interoperability; **reliability**: availability, fault tolerance; **usability**: accessibility, learnability, ease of use; **portability**: adaptability, installability; **maintainability**: testability)
-- określeń funkcjonalności (display datasets; display help; display lists; update time series; sector structure; sector time series; sector technical analysis). 
+- określeń funkcjonalności (core data; database; sector structures; sector time series; sector technical analysis). 
 
 ### Wymagania funkcjonalne
 
@@ -60,7 +60,7 @@ Opis wymagań jest adekwatny dla użytkowników, którzy zainstalowali oraz zał
 | F.DB.2 | Aktualizowanie baz szeregów czasowych `.csv` użytkownika - funkcja `updateData(path_to_local_data)` | Funkcja z obligatoryjnym parametrem ścieżki dyskowej (jak w F.DB.1) aktualizuje szeregi czasowe notowań uprzednio zapisanych przez użytkownika funkcją `saveData(path)`.  | 1 | funkcjonalne |
 
 
-#### **Grupa nr 3 (sector structures):** analiza struktury sektorowej walorów w danym państwie
+#### **Grupa nr 3 (sector structure):** analiza struktury sektorowej walorów w danym państwie
 
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
