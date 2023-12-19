@@ -23,8 +23,9 @@ biblioteka języka R wspomagająca analizę notowań spółek giełdowych w prze
 
 ## 2. Prawa autorskie
 ### Członkowie zespołu:
-**Ryszard Karol Lisiecki** – pomysłodawca, projektant, programista, tester;
-**Michał Bartkiewicz** – tester wdrożeniowy.
+**Ryszard Karol Lisiecki** – pomysłodawca, projektant, programista, tester - prawa autorskie do koncepcji oraz bazy kodu biblioteki włącznie z wykonanymi projektami testów, do wykonanych prezentacji, demonstracji i specyfikacji wymagań;
+
+**Michał Bartkiewicz** – tester wdrożeniowy - prawa autorskie do części testów zaprojektowanych i wykonanych samodzielnie.
 
 ### Warunki licencyjne: 
 
@@ -48,7 +49,7 @@ Opis wymagań jest adekwatny dla użytkowników, którzy zainstalowali oraz zał
 | F.CD.1 | Wyświetlenie/przyłączenie do środowiska R danych dołączonych | Wywołanie danych dołączonych wraz z biblioteką po nazwie podzbioru powoduje ich wyświetlenie oraz umożliwia jawne włączenie do środowiska lokalnego. | 1 | Funkcjonalne |
 | F.CD.2 | Wyświetlanie plików pomocy | Zapytanie za pośrednictwem funkcji `help(object)` o zbiór danych lub funkcję biblioteki powoduje wyświetlenie treści odpowiedniego pliku pomocy. | 1 | Funkcjonalne |
 | F.CD.3 | Tworzenie tabel zawężonych list spółek - funkcja `listCompanies(country, sector, industry,...)` | Funkcja z opcjonalnymi parametrami tekstowymi nazwy kraju (`country`) i nazwy sektora (`sector`) lub nazwy prz3mysłu (`industry`)  zwraca w formacie tabeli (struktury `data.frame`) zbiór **nazw, symboli spółek, ich przemysłów, sektorów, krajów rejestracji** oraz **walut kwotowania** właściwej konkretnemu symbolowi w źródle notowań. Funkcja domyślnie zwraca pełną listę spółek. | 1 | Funkcjonalne |
-| F.CD.3.1 | Tworzenie tabel bardziej zawężonych list spółek - funkcja `listCompanies(country, sector, industry, market_cap_thresh)` | Ta sama funkcji, co w **F.CD.3** z dodatkowym, opcjonalnym parametrem liczbowym progowego **poziomu kapitalizacji rynkowej** (`market_cap_thresh`) ten sam rezultat zawęża do spółek przekraczających określony poziom kapitalizacji rynkowej.  | 1 | Funkcjonalne |
+| F.CD.3.1 | Tworzenie tabel bardziej zawężonych list spółek - funkcja `listCompanies(country, sector, industry, market_cap_thresh)` | Ta sama funkcyja, co w **F.CD.3** z dodatkowym, opcjonalnym parametrem liczbowym progowego **poziomu kapitalizacji rynkowej** (`market_cap_thresh`) ten sam rezultat zawęża do spółek przekraczających określony poziom kapitalizacji rynkowej.  | 1 | Funkcjonalne |
 | F.CD.4 | Drukowanie zagnieżdżonej listy sektorów i przemysłów wraz z przykładami spółek - funkcja `printSectorStructure(company_database)` | Funkcja zwraca wydruk zagnieżdżonej listy przemysłow i sektorów dostępnych w bazie  wraz z przykładami firm i ich tickerów dla każdego z jej elementów. Lista wypisywana jest przez kilka sekund symulując wydruk. | 1 | Funkcjonalne |
 
 #### **Grupa nr 2 (database):** zapis i aktualizacja szeregów czasowych
@@ -63,8 +64,8 @@ Opis wymagań jest adekwatny dla użytkowników, którzy zainstalowali oraz zał
 
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
-| F.SS.1 | Tworzenie tabel struktury sektorowej - funkcja `sStructure(country, libdata=TRUE, path_to_data=NULL)` | Funkcja z obligatoryjnym parametrem nazwy państwa (`country`) oraz opcjonalnymi parametrami `libdata` oraz `path_to_data` zwraca w formacie tekstowym tabeli najbardziej aktualny zbiór wartości łącznych kapitalizacji (`Market cap total`) w Euro oraz udziałów  w kapitalizacji łącznej (`Total market cap share`) wszystkich spółek skategoryzowanych w tych sektorach i przemysłach. Funkcja przelicza odpowiednie wartości do Euro, jeżeli to konieczne. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `libdata=FALSE` ich aktualizowalne wersje zapisane w koniecznej wtedy do podania lokalizacji `path_to_data`, zapisanej jak w F.DB.1 | 1 | funkcjonalne |
-| F.SS.2 | Tworzenie wykresu struktury sektorowej - funkcja `sStructureChart(country, libdata=TRUE, path_to_data=NULL)` | Funkcja z obligatoryjnym parametrem nazwy państwa (`country`) oraz opcjonalnymi parametrami `libdata` oraz `path_to_data` zwraca wykres powierzchniowy udziałów poszczególnych sektorów w kapitalizacji łącznej spółek skategoryzowanych tymi sektorami. Funkcja wykorzystuje przeliczenie odpowiednich wartości do Euro, gdy to konieczne. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `libdata=FALSE` ich aktualizowalne wersje zapisane w koniecznej wtedy do podania lokalizacji `path_to_data`, zapisanej jak w F.DB.1 | 1 | funkcjonalne |
+| F.SS.1 | Tworzenie tabel struktury sektorowej - funkcja `sStructure(country, libdata=TRUE, path_to_data=NULL)` | Funkcja z obligatoryjnym parametrem nazwy państwa (`country`) oraz opcjonalnymi parametrami `libdata` oraz `path_to_data` zwraca w formacie tekstowym tabeli najbardziej aktualny zbiór wartości łącznych kapitalizacji (`Market cap total`) w Euro oraz udziałów  w kapitalizacji łącznej (`Total market cap share`) wszystkich spółek skategoryzowanych w tych sektorach i przemysłach. Funkcja przelicza odpowiednie wartości do Euro, jeżeli to konieczne. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `libdata=FALSE` ich aktualizowane wersje zapisane w koniecznej wtedy do podania lokalizacji `path_to_data`, zapisanej jak w F.DB.1 | 1 | funkcjonalne |
+| F.SS.2 | Tworzenie wykresu struktury sektorowej - funkcja `sStructureChart(country, libdata=TRUE, path_to_data=NULL)` | Funkcja z opcjonalnymi parametrami nazwy państwa (`country`) oraz `libdata` i `path_to_data` zwraca wykres powierzchniowy udziałów poszczególnych sektorów w kapitalizacji łącznej spółek skategoryzowanych tymi sektorami. Funkcja wykorzystuje przeliczenie odpowiednich wartości do Euro, gdy to konieczne. Domyślnie struktura prezentowana jest dla całego zbioru spółek a uzupełnienie parametru nazwy państwa zawęża rezultat geograficznie. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `libdata=FALSE` ich aktualizowane wersje zapisane w koniecznej wtedy do podania lokalizacji `path_to_data`, zapisanej jak w F.DB.1. | 1 | funkcjonalne |
 
 
 #### **Grupa nr 4 (sector time series):** analiza szeregów czasowych sektorów
@@ -72,15 +73,15 @@ funkcje sIndices(country), sIndicesChart(...) - wartość kapitalizacji w czasie
 funkcja sIndicesTRCompChart(country1, country2, sector1, sector2) - wykres porównawczy indeksów jednopodstawowych kapitalizacji t1=100
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
-| ... | ...(funkcja `sIndices(country)`) | ... | 1 | funkcjonalne |
-| ... | ...(funkcja `sIndicesChart(country)`) | ... | 1 | funkcjonalne |
-| ... | ...(funkcja `sIndicesTRCompChart(country)`) | ... | 1 | funkcjonalne |
+| F.STS.1 | Tworzenie tabeli wartości łącznej kapitalizacji spółek w państwie względem sektorów - funkcja `sIndices(country, libdata=TRUE, path_to_data = NULL)` | Funkcja z opcjonalnymi parametrami nazwy państwa (`country`) oraz `libdata` i `path_to_data` zwraca w formie tabeli (struktury `data.frame`) wartości łączne kapitalizacji spółek we wszystkich sektorach (kolumny), dla poszczególnych miesięcy z notowaniami dostępnymi w bazie szeregów czasowych (wiersze). Wartości przeliczone są do waluty Euro, na podstawie notowań poszczególnych spółek w zbiorze danych. Domyślnie prezentowane są wyliczenia dla całego zbioru spółek a uzupełnienie parametru wybranego państwa zawęża reultat geograficznie. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `libdata=FALSE` ich aktualizowane wersje zapisane w koniecznej wtedy do podania lokalizacji `path_to_data`, zapisanej jak w F.DB.1.| 1 | funkcjonalne |
+| F.STS.2 | ...(funkcja `sIndicesChart(country)`) | ... | 1 | funkcjonalne |
+| F.STS.3 | ...(funkcja `sIndicesTRCompChart(country)`) | ... | 1 | funkcjonalne |
 
 #### **Grupa nr 5 (sector technical analysis):** - raport analizy technicznej grupy spółek sektora w państwie
 
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
-| ... | ...(funkcja `TAReport(country, sector)`) | ... | 1 | funkcjonalne |
+| F.TA.1 | Tworzenie tabeli raportu analizy technicznej przekroju sektorowo-geograficznego spółek - funkcja `TAReport(country, sector, libdata = TRUE, path_to_data = NULL)` | Funkcja z obligatoryjnymi parametrami nazwy państwa (`country`) oraz nazwy sektora (`sector`) i opcjonalnymi parametrami `libdata` oraz `path_to_data` zwraca w formie tabeli (struktury `data.frame`) raport analizy technicznej wszystkich spółek wybranego przekroju sektorowo-geograficznego. Wiersze tabeli odpowiadają kolejnym spółkom. Kolumny tabeli, to `Name` - nazwa spółki, `Ticker` - jej użyty symbol giełdowy, `Industry` - kategoria przemysłu spółki, `MA` - kategoria trendu notowań (`bullish` lub `bearish`) ustalona na podstawie relacji aktualnej ceny do wartości 11-okresowej średniej ruchomej, `RSI` - kategoria oscylatora Relative Strength Index (`overbought`, `no signal` lub `oversold`) ustalona na podstawie 14-okresowej wartości wskaźnika RSI w jednym z przedziałów (<70-100>, [30-70], <0, 30>). Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `libdata=FALSE` ich aktualizowane wersje zapisane w koniecznej wtedy do podania lokalizacji `path_to_data`, zapisanej jak w F.DB.1. | 1 | funkcjonalne |
 
 ### Wymagania pozfunkcjonalne
 
