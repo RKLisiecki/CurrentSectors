@@ -22,7 +22,7 @@ Current Sectors.
 biblioteka języka R wspomagająca analizę notowań spółek giełdowych w przekrojach sektorowych i geograficznych.
 
 ## 2. Prawa autorskie
-### Autorzy:
+### Członkowie zespołu:
 **Ryszard Karol Lisiecki** – pomysłodawca, projektant, programista, tester;
 **Michał Bartkiewicz** – tester wdrożeniowy.
 
@@ -37,55 +37,33 @@ Wykorzystane w nazewnictwie identyfikatorów wymagań skrótowce opierają się 
 - dotyczących kryteriów jakości oprogramowania (**system performance**; **security**: confidentiality, integrity; **functionality**: interoperability; **reliability**: availability, fault tolerance; **usability**: accessibility, learnability, ease of use; **portability**: adaptability, installability; **maintainability**: testability)
 - określeń funkcjonalności (display datasets; display help; display lists; update time series; sector structure; sector time series; sector technical analysis). 
 
-### Wymagania pozfunkcjonalne
-
-Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano w oparciu o standard **ISO/IEC 25010:2011**. Uwzględniono tylko subiektywnie najważniejsze kryteria.
-
-| Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
-| --- | --- | --- | :---: | --- |
-| NF.Q.SP.1 | Wydajność biblioteki | Operacje dotyczące przetwarzania matematycznego danych *offline* na komputerze bądź serwerze użytkownika funkcje biblioteki wykonują możliwie najszybciej, z wykorzystaniem przetwarzania równoległego. | 1 | pozafunkcjonalne |
-| NF.Q.SP.2 | Wydajność web-scrapingu | Operacje dotyczące zaciągania danych z API oraz stron znajdujących się w kontekście systemu funkcje biblioteki wykonują w dbałości o nieprzekracznie limitów API Yahoo Finance. | 1 | pozafunkcjonalne |
-| NF.Q.S.C.1 | Bezpieczeństwo - poufność | Biblioteka w żaden sposób nie monitoruje, nie archiwizuje ani nie przesyła informacji o działalności użytkownika ponad to, co jest konieczne do spowalniania web-scrapingu. | 1 | pozafunkcjonalne |
-| NF.Q.S.I.1 | Bezpieczeństwo - integralność danych zawartych | Dane giełdowe zawarte w bibliotece sprawdzone są pod kątem poprawności formalnej oraz zmodyfikowane w stosunku do źródłowych tylko w aspekcie organizacji i składowania danych. | 1 | pozafunkcjonalne |
-| NF.Q.F.I.1 | Interoperacyjność | Biblioteka może współpracować z innymi bibliotekami środowiska R nawet w przypadków konfliktu nazw funkcji. Funkcje biblioteki dodawane są do ścieżki wyszukań po załadowaniu biblioteki. | 1 | pozafunkcjonalne |
-| NF.Q.R.A.1 | Dostępność | Dostępność zdalnego repozytorium biblioteki uwarunkowana jest uwarunkowana dostępnością usług Github (powyżej 99,7% czasu w roku) a skompilowana przez użytkownika biblioteka dostępna jest zawsze. | 1 | pozafunkcjonalne |
-| NF.Q.R.FT.1 | Odporność na błędy użytkowników | Działanie funkcji biblioteki jest uodpornione na większość najczęściej popełnianych błędów podczas wprowadzania danych przez użytkownik. | 1 | pozafunkcjonalne |
-| NF.Q.R.FT.1 | Odporność na błędy bibliiotek skojarzonych i usług API | Funkcje obliczeniowe i graficzne biblioteki są odporne na nieprawidłowe działanie usług związanych z pozyskiwaniem danych z Internetu. | 1 | pozafunkcjonalne |
-| NF.Q.U.A.1 | Przystępność | Biblioteka jest przystosowana do prezentowania pomocy w języku angielskim - w tym dla użytkowników niedowidzących, korzystających z czytników ekranu. | 1 | pozafunkcjonalne |
-| NF.Q.U.L.1 | Łatwość przyswojenia | Biblioteka zawiera niewielką liczbę funkcji, na wysokim poziomie abstrakcji oraz co najwyżej kilku parametrach. | 1 | pozafunkcjonalne |
-| NF.Q.U.EoU.1 | Łatwość użytkowania | Funkcje biblioteki mają intuicyjne nazwy oraz dostępne pliki pomocy zawierające przykłady użycia | 1 | pozafunkcjonalne |
-| NF.Q.P.A.1 | Przystosowawczość | Działanie biblioteki nie jest upośledzane poprzez zmieny sprzętu bądź systemu operacyjnego tak długo, jak wspierają one działanie środowiska R w odpowiedniej wersji. | 1 | pozafunkcjonalne |
-| NF.Q.P.I.1 | Efektywność instalacji | Biblioteka może zostać zarówno zainstalowana, jak też odinstalowana poprzez uruchomienie jednej linijki kodu. | 1 | pozafunkcjonalne |
-| NF.Q.M.T.1 | Testowalność | Funkcje bibilioteki posiadają niezawierające sprzeczności kryteria akceptowalności zwracanych rezultatów. | 1 | pozafunkcjonalne |
-
-
 ### Wymagania funkcjonalne
 
 Opis wymagań jest adekwatny dla użytkowników, którzy zainstalowali oraz załadowali bibliotekę CurrentSectors do własnego środowiska R, po czym wywołują w konsoli odpowiednie polecenia i funkcje opisane w plikach pomocy.
 
-#### **Grupa nr 1 (display):** wyświetlanie i/lub zapis do zmiennej list zbiorczych
+#### **Grupa nr 1 (core data):** wyświetlanie i/lub zapis do zmiennej list zbiorczych
 
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
-| F.DD.1 | Wyświetlanie i/lub zapis danych dołączonych | ... | 1 | Funkcjonalne |
-| F.DH.1 | Wyświetlanie plików pomocy | ... | 1 | Funkcjonalne |
-| F.DL.1 | Wyświetlanie i/lub zapis list spółek o zadanych atrybutach (funkcja `listCompanies(country, sector, industry,...)`) | Po wywołaniu funkcji z opcjonalnymi parametrami tekstowymi nazwy kraju lub/i nazwy przemysłu (lub nazwy sektora) w konsoli prezentowany jest wierszami zbiór **nazw, symboli spółek, ich przemysłów, sektorów, krajów rejestracji** oraz **waluty kwotowania**. Wynik w postaci tabeli może być jednocześnie przez przypisanie przekierowywany do zmiennej o typie `list` i klasie `data.frame`. W przypadku niewłaściwej parametryzacji przez użytkownika lub braku rezultatów, do konsoli zostanie zwrócony monit. | 1 | Funkcjonalne |
-| F.DL.1.2 | Wyświetlanie i/lub zapis list spółek o zadanych atrybutach oraz filtrze liczbowym najniższej progowej kapitalizacji rynkowej (funkcja `listCompanies(country, sector, industry, market_cap_thresh)`) | Po wywołaniu tej samej funkcji, co w **F.DL.1.1** z dodatkowym, opcjonalnym parametrem liczbowym progowego **poziomu kapitalizacji rynkowej**  ten sam rezultat zostanie zawężony do spółek przekraczających określony poziom kapitalizacji rynkowej.  | 1 | Funkcjonalne |
+| F.CD.1 | Wyświetlenie/przyłączenie do środowiska R danych dołączonych | Wywołanie danych dołączonych wraz z biblioteką po nazwie podzbioru powoduje ich wyświetlenie oraz umożliwia jawne włączenie do środowiska lokalnego. | 1 | Funkcjonalne |
+| F.CD.2 | Wyświetlanie plików pomocy | Zapytanie za pośrednictwem funkcji `help(object)` o zbiór danych lub funkcję biblioteki powoduje wyświetlenie treści odpowiedniego pliku pomocy. | 1 | Funkcjonalne |
+| F.CD.3 | Tworzenie tabel zawężonych list spółek - funkcja `listCompanies(country, sector, industry,...)` | Funkcja z opcjonalnymi parametrami tekstowymi nazwy kraju (`country`) i nazwy sektora (`sector`) lub nazwy prz3mysłu (`industry`)  zwraca w formacie tabeli (struktury `data.frame`) zbiór **nazw, symboli spółek, ich przemysłów, sektorów, krajów rejestracji** oraz **walut kwotowania** właściwej konkretnemu symbolowi w źródle notowań. Funkcja domyślnie zwraca pełną listę spółek. | 1 | Funkcjonalne |
+| F.CD.3.1 | Tworzenie tabel bardziej zawężonych list spółek - funkcja `listCompanies(country, sector, industry, market_cap_thresh)` | Ta sama funkcji, co w **F.CD.3** z dodatkowym, opcjonalnym parametrem liczbowym progowego **poziomu kapitalizacji rynkowej** (`market_cap_thresh`) ten sam rezultat zawęża do spółek przekraczających określony poziom kapitalizacji rynkowej.  | 1 | Funkcjonalne |
 
 #### **Grupa nr 2 (database):** zapis i aktualizacja szeregów czasowych
 
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
-| F.DB.SD.1 | Zapis danych biblioteki na dysku użytkownika (funkcja `saveData(path)`) | Po zapisaniu przez użytkownika w zmiennej tekstowej `path` ścieżki dyskowej katalogu oraz wywołaniu funkcji z tym parametrem, dane zapisane w bibliotece zostaną zapisane w plikach .csv w wybranym miejscu na dysku, co umożliwi ich późniejszą aktualizację. W przypadku Niewłaściwej parametryzacji lub niedostępność lokalizacji, do konsoli zostanie zwrócony monit. | 1 | funkcjonalne |
-| F.DB.UD.1 | Aktualizowanie bazy plików csv użytkownika (funkcja `updateData(path_to_local_data)`) | Po zapisaniu przez użytkownika w zmiennej tekstowej `path_to_local_data` lokalizacji katalogu zawierającego zapisane uprzednio pliki danych z biblioteki oraz wywołaniu funkcji z tym parametrem, dane szeregów czasowych oraz ich metadane zostaną zaktualizowane, jeżeli tylko istnieją już nowsze obserwacje. W przypadku niewłaściwej parametryzacji, niedostępności lokalizacji lub braku potrzeby aktualizacji, do konsoli zostanie zwrócony monit. | 1 | funkcjonalne |
+| F.DB.1 | Zapis danych dołączonych biblioteki na dysku użytkownika - funkcja `saveData(path)` | Funkcja z obligatoryjnym parametrem ścieżki dyskowej w formacie tekstowym (właściwym środowiskom Linuxowym) zapisuje w tej lokalizacji dane dołączone biblioteki w plikach `.csv`. Umożliwia to ich późniejszą aktualizację. | 1 | funkcjonalne |
+| F.DB.2 | Aktualizowanie baz szeregów czasowych `.csv` użytkownika (funkcja `updateData(path_to_local_data)`) | Funkcja z obligatoryjnym parametrem ścieżki dyskowej (jak w F.DB.1) aktualizuje szeregi czasowe notowań uprzednio zapisanych przez użytkownika funkcją `saveData(path)`.  | 1 | funkcjonalne |
 
 
 #### **Grupa nr 3 (sector structures):** analiza struktury sektorowej walorów w danym państwie
 
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
-| ... | ... (funkcja `sStructure(country, libdata=TRUE)`) | ... | 1 | funkcjonalne |
-| ... | ... (funkcja `sStructureChart(country, libdata=TRUE)`) | ... | 1 | funkcjonalne |
+| F.SS.1 | Tworzenie tabel struktury sektorowej - funkcja `sStructure(country, libdata=TRUE, path_to_data=NULL)` | Funkcja z obligatoryjnym parametrem nazwy państwa (`country`) oraz opcjonalnymi parametrami `libdata` oraz `path_to_data` zwraca w formacie tekstowym tabeli najbardziej aktualny zbiór wartości łącznych kapitalizacji (`Market cap total`) oraz udziałów  w kapitalizacji łącznej (`Total market cap share`) wszystkich spółek skategoryzowanych w tych sektorach i przemysłach. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `libdata=FALSE` ich aktualizowalne wersje zapisane w koniecznej wtedy do podania lokalizacji `path_to_data`, zapisanej jak w F.DB.1 | 1 | funkcjonalne |
+| F.SS.2 | Tworzenie wykresu struktury sektorowej - funkcja `sStructureChart(country, libdata=TRUE, path_to_data=NULL)` | Funkcja z obligatoryjnym parametrem nazwy państwa (`country`) oraz opcjonalnymi parametrami `libdata` oraz `path_to_data` zwraca wykres powierzchniowy udziałów poszczególnych sektorów w kapitalizacji łącznej spółek skategoryzowanych tymi sektorami. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `libdata=FALSE` ich aktualizowalne wersje zapisane w koniecznej wtedy do podania lokalizacji `path_to_data`, zapisanej jak w F.DB.1 | 1 | funkcjonalne |
 
 
 #### **Grupa nr 4 (sector time series):** analiza szeregów czasowych sektorów
@@ -102,6 +80,25 @@ funkcja sIndicesTRCompChart(country1, country2, sector1, sector2) - wykres poró
 | Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
 | --- | --- | --- | :---: | --- |
 | ... | ...(funkcja `TAReport(country, sector)`) | ... | 1 | funkcjonalne |
+
+### Wymagania pozfunkcjonalne
+
+Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano inspirując się standardem **ISO/IEC 25010:2011**. Uwzględniono tylko subiektywnie najważniejsze kryteria.
+
+| Identyfikator | Nazwa | Opis | Priorytet | Kategoria |
+| --- | --- | --- | :---: | --- |
+| NF.Q.SP.1 | Wydajność biblioteki | Operacje dotyczące przetwarzania matematycznego danych *offline* na komputerze bądź serwerze użytkownika funkcje biblioteki wykonują możliwie najszybciej, z wykorzystaniem przetwarzania równoległego. | 1 | pozafunkcjonalne |
+| NF.Q.SP.2 | Wydajność web-scrapingu | Operacje dotyczące zaciągania danych z API oraz stron znajdujących się w kontekście systemu funkcje biblioteki wykonują w dbałości o nieprzekracznie limitów API Yahoo Finance. | 1 | pozafunkcjonalne |
+| NF.Q.S.C.1 | Bezpieczeństwo - poufność | Biblioteka w żaden sposób nie monitoruje, nie archiwizuje ani nie przesyła informacji o działalności użytkownika ponad to, co jest konieczne do spowalniania web-scrapingu. | 1 | pozafunkcjonalne |
+| NF.Q.F.I.1 | Interoperacyjność | Biblioteka może współpracować z innymi bibliotekami środowiska R nawet w przypadków konfliktu nazw funkcji. Funkcje biblioteki dodawane są do ścieżki wyszukań po załadowaniu biblioteki. | 1 | pozafunkcjonalne |
+| NF.Q.R.FT.1 | Odporność na błędy użytkowników | Działanie funkcji biblioteki jest uodpornione na większość najczęściej popełnianych błędów podczas wprowadzania danych przez użytkownik. | 1 | pozafunkcjonalne |
+| NF.Q.U.A.1 | Przystępność | Biblioteka prezentuje pliki pomocy w języku angielskim - w tym dla użytkowników niedowidzących, korzystających z czytników ekranu. | 1 | pozafunkcjonalne |
+| NF.Q.U.L.1 | Łatwość przyswojenia | Biblioteka zawiera niewielką liczbę funkcji, na wysokim poziomie abstrakcji oraz co najwyżej kilku parametrach. | 1 | pozafunkcjonalne |
+| NF.Q.U.EoU.1 | Łatwość użytkowania | Funkcje biblioteki mają intuicyjne nazwy oraz dostępne pliki pomocy zawierające przykłady użycia | 1 | pozafunkcjonalne |
+| NF.Q.P.A.1 | Przystosowawczość | Działanie biblioteki nie jest upośledzane poprzez zmiany sprzętu bądź systemu operacyjnego tak długo, jak wspierają one działanie środowiska R w odpowiedniej wersji. | 1 | pozafunkcjonalne |
+| NF.Q.P.I.1 | Efektywność instalacji | Biblioteka może zostać zarówno zainstalowana, jak też odinstalowana poprzez uruchomienie jednej linijki kodu. | 1 | pozafunkcjonalne |
+| NF.Q.M.T.1 | Testowalność | Funkcje bibilioteki posiadają niezawierające sprzeczności kryteria akceptowalności zwracanych rezultatów. | 1 | pozafunkcjonalne |
+
 
 ## 3. Architektura oprogramowania
 
