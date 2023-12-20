@@ -1,7 +1,7 @@
-#' Company overview of 2104 European and American stocks (from Yahoo Finance)
+#' Company overviews of 2104 European and American stocks (from Yahoo Finance)
 #'
 #' A subset of Yahoo Finance profile and statistics data of 1161 US and
-#' 944 European companies (BE, DE, ES, FR, IT, NL, NO, PT)
+#' 943 European companies (BE, DE, ES, FR, IT, NL, NO, PT)
 #' plus metadata about their stock timeseries in this library
 #' plus their USD and EUR market cap values after conversion
 #' at rate dated at last observation.
