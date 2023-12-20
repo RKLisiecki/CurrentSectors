@@ -14,3 +14,6 @@ LazyData: true
 Imports: 
     quantmod (>= 0.4.25),
     xts (>= 0.13.1)
+Depends: 
+    R (>= 2.10)
+RoxygenNote: 7.2.3
