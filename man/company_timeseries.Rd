@@ -5,7 +5,6 @@
 \alias{company_timeseries}
 \title{Historical stock prices - monthly closes of 2104 stocks (from Yahoo Finance)}
 \format{
-## `company_timeries`
 An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2104 columns:
 \describe{
   \item{ABCA.PA}{ABC Arbitrage monthly close prices}

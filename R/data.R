@@ -6,8 +6,7 @@
 #' plus their USD and EUR market cap values after conversion
 #' at rate dated at last observation.
 #'
-#' @format ## `company_database`
-#' A data frame with 2104 rows and 13 columns:
+#' @format A data frame with 2104 rows and 13 columns:
 #' \describe{
 #'   \item{Name}{Company name on one of the Euronext exchanges or Polish brokerage houses}
 #'   \item{Ticker}{Company stock ticker used to collect data from Yahoo Finance}
@@ -34,8 +33,7 @@
 #' Column names of this dataset correspond to Yahoo Finance tickers
 #' and the `Ticker`column in the `company_database` dataset.
 #'
-#' @format ## `company_timeries`
-#' An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2104 columns:
+#' @format An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2104 columns:
 #' \describe{
 #'   \item{ABCA.PA}{ABC Arbitrage monthly close prices}
 #'   \item{...}{...}
@@ -54,8 +52,7 @@
 #' Columns names of this dataset DO NOT correspond to Yahoo Finance tickers
 #' and ARE NOT available in the `company_database` dataset.
 #'
-#' @format ## `forex_timeseries`
-#' An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2 coumns:
+#' @format An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2 coumns:
 #' \describe{
 #'   \item{EURUSD}{EUR/USD bid FX spot rate}
 #'   \item{EURNOK}{EUR/NOK bid FX spot rate}

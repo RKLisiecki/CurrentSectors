@@ -5,7 +5,6 @@
 \alias{company_database}
 \title{Company overview of 2104 European and American stocks (from Yahoo Finance)}
 \format{
-## `company_database`
 A data frame with 2104 rows and 13 columns:
 \describe{
   \item{Name}{Company name on one of the Euronext exchanges or Polish brokerage houses}
