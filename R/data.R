@@ -34,12 +34,15 @@
 #' Column names of this dataset correspond to Yahoo Finance tickers
 #' and the `Ticker`column in the `company_database` dataset.
 #'
-#' @format ## `company_timesries`
-#' An xts object on 2018-01-31 / 2023/11/30 containing:
-#' Data: double [71, 2104]
-#' Columns: ABCA.PA, ALCRB.PA, ORIA.PA ... and 2101 more columns (Tickers used in Yahoo Finance)
-#' Index: Date [71] (TZ: "UTC")
-#'
+#' @format ## `company_timeries`
+#' An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2104 columns:
+#' \describe{
+#'   \item{ABCA.PA}{ABC Arbitrage monthly close prices}
+#'   \item{...}{...}
+#'   \item{<Ticker>}{<Company_name> monthly close prices}
+#'   \item{...}{...}
+#'   \item{WMT}{Walmart monthly close prices}
+#'}
 #' @source <https://finance.yahoo.com/quote/.../history>
 "company_timeseries"
 
@@ -52,10 +55,7 @@
 #' and ARE NOT available in the `company_database` dataset.
 #'
 #' @format ## `forex_timeseries`
-#' An xts object on 2018-01-31 / 2023/11/30 containing:
-#' Data: double [71, 2]
-#' Columns: EURUSD, EURNOK
-#' Index:   Date [71] (TZ: "UTC")
+#' An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2 coumns:
 #' \describe{
 #'   \item{EURUSD}{EUR/USD bid FX spot rate}
 #'   \item{EURNOK}{EUR/NOK bid FX spot rate}

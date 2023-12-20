@@ -6,10 +6,7 @@
 \title{Historical FOREX bid prices - monthly close of EURUSD and EURNOK (from Yahoo Finance)}
 \format{
 ## `forex_timeseries`
-An xts object on 2018-01-31 / 2023/11/30 containing:
-Data: double [71, 2]
-Columns: EURUSD, EURNOK
-Index:   Date [71] (TZ: "UTC")
+An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2 coumns:
 \describe{
   \item{EURUSD}{EUR/USD bid FX spot rate}
   \item{EURNOK}{EUR/NOK bid FX spot rate}

@@ -5,11 +5,15 @@
 \alias{company_timeseries}
 \title{Historical stock prices - monthly closes of 2104 stocks (from Yahoo Finance)}
 \format{
-## `company_timesries`
-An xts object on 2018-01-31 / 2023/11/30 containing:
-Data: double [71, 2104]
-Columns: ABCA.PA, ALCRB.PA, ORIA.PA ... and 2101 more columns (Tickers used in Yahoo Finance)
-Index: Date [71] (TZ: "UTC")
+## `company_timeries`
+An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2104 columns:
+\describe{
+  \item{ABCA.PA}{ABC Arbitrage monthly close prices}
+  \item{...}{...}
+  \item{<Ticker>}{<Company_name> monthly close prices}
+  \item{...}{...}
+  \item{WMT}{Walmart monthly close prices}
+}
 }
 \source{
 <https://finance.yahoo.com/quote/.../history>
