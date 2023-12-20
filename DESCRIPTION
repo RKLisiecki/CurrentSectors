@@ -1,10 +1,10 @@
 Package: CurrentSectors
 Type: Package
 Title: Stock Quotes Analysis Across Sectors and Regions
-Version: 0.1.0
+Version: 0.2.0
 Author: Ryszard Karol Lisiecki
 Maintainer: Ryszard Karol Lisiecki <11227516+RKLisiecki@users.noreply.github.com>
-Description: Empowers drilling down stock quotes across sectors and countries,
+Description: Empowers drilling down stock quotes across sectors, industries and countries,
     facilitates comparative analysis of stock market performance across sectors and countries,
     streamlines sector structure analysis and sector performance analysis,
     simplifies bulk data ingestion from Yahoo Finance.

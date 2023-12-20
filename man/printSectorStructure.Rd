@@ -25,4 +25,5 @@ an actual printout.
 printSectorStructure()
 
 # Author: R. Karol Lisiecki
+
 }
