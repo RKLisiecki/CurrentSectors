@@ -11,13 +11,15 @@ While there are a couple of industry and sector classifications (i.e. [GICS](htt
 <details>
   <summary> Click to expand or contract </summary>
 
-# Dokumentacja projektowa  
+# Dokumentacja oprogramowania
+
+Dokumentacja biblioteki R Current Sectors przygotowana pod kątem zajęć z Inżynierii oprogramowania na NMSU ADBD na WZ UG.
 
 ## 1. Charakterystyka oprogramowania
-### Nazwy skrócone:  
-**cursecs** (w otoczeniu zewnętrznym) / **CS** (wewnątrz projektu).
+### Nazwa skrócona:  
+(nie dotyczy)
 ### Nazwa pełna: 
-Current Sectors.
+CurrentSectors
 ### Krótki opis ze wskazaniem celów: 
 biblioteka języka R wspomagająca analizę notowań spółek giełdowych w przekrojach sektorowych i geograficznych.
 
