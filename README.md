@@ -1,5 +1,4 @@
-# Current Sectors - Introduction
-An upcoming R library, which: 
+# Current Sectors R library:
 - empowers to drill down stock tickers from stock exchanges from within [Euronext](https://www.euronext.com/en) across industries, sectors and countries,
 - facilitates comparative analysis of shares' market performance,
 - streamlines the process of sector structure analysis of stock exchanges in various countries,
@@ -140,14 +139,27 @@ Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano inspiruj
 
 ## 4. Testy
 
-Każdy test musi zostać poprzedzony restartem środowiska R, instalacją CurrentSectors z repozytorium zdalnego oraz załadowaniem biblioteki. Test musi rozpoczynać się wywołaniami funkcji `sessionInfo()`. Wszystkie wykonywane testy (z wyjątkiem tych "wyklikanych") powinny zostać zapisane w formie notatników `Rmd` ORAZ następnie wygenerowanych (`knitter`em) z nich plików `html` (wraz z zapisanym wyjściem komend) do katalogu `tests` w repozytorium.
-Format nazewnictwa powinien być zgodny ze strukturą:
+Tester jest odpowiedzialny za poprawną konfigurację swojego środowiska testowego (uruchomieniowego) tak, aby biblioteka kompilowała się w nim oraz by był możliwy eksport plików `Rmd` do `html` za pośrednictwem `knittera`. Testy nieudane z powodu uchybień testera w konfiguracji własnego środowiska **nie mogą być wgrywane do repozytorium** ani dokumentowane w tabeli.
 
+Każdy test musi być wykonywany w środowisku uruchomieniowym spełniającym odpowiednie kryteria, wprost z IDE RStudio, 
+w nowo zapoczątkowanym projekcie - tak jakby tester próbował używać bibliotekę do celów analitycznych.
+Każdy test musi być wykonywany w notatniku R Markdown a scenariusz musi zostać poprzedzony:
+1. Restartem środowiska R [ctrl + Shift + F10].
+2. Wywołaniem funkcji wbudowanej `sessionInfo()`.
+3. Załadowaniem pakietu `devtools` (w wersji 2.4.5. wzwyż).
+4. Instalacją najnowszej wersji biblioteki CurrentSectors z repozytorium zdalnego (`install_github("RKLisiecki/CurrentSectors", force = TRUE)`).
+5. Załadowaniem biblioteki (`library(CurrentSectors)`).
+6. Ponownym wywołaniem `sessionInfo()`.
+Dalej tester wykonuje scenariusz testowy, po wykonaniu którego powinien:
+1. Odłączyć bibliotekę (`detach(package:CurrentSectors)`).
+2. Odinstalować bibliotekę (`remove.packages("CurrentSectors")`) - **to powinno być ostatnie polecenie w pliku testu**.
+3. Wyeksportować notatnik `Rmd` do pliku `html` (poleceniem `knit`; plik ulegnie zapisaniu, cały kod wykonana się ponownie a wyjścia komend zostaną zapisane).
+4. Przenieść **kopie** plików `Rmd` oraz `html` do dowolnego odrębnego katalogu na swoim dysku.
+5. Zmienić nazwy plików według schematu:
 **[Identyfikator].[WersjaBiblioteki].[RRRR-MM-DD].[RozszerzeniePliku]**
-
-(wersja biblioteki sprawdzana jest w pliku DESCRIPTION w katalogu głównym)
-
-Następnie rezultat testu należy wpisać do tabeli poniżej, podpisując się inicjałami. Testy tej samej funkcji powinny znajdować się w jednym rzędzie, chronologicznie.
+(zachowując poprzednie rozszerzenia plików oraz zgodność Identyfikatorów z tymi w tabeli testów u dołu tego dokumentu).
+6. Umieścić oba pliki w katalogu `tests` tego repozytorium, w gałęzi `master`.
+7. Uzupełnić wpis wykonywanego scenariusza w tabeli testów (testy z tym samym Id w jednym rzędzie, chronologicznie, podpis inicjałami).
 
 | Identyfikator | Nazwa | Scenariusz | Wynik | Wersja biblioteki | Data | Uwagi | Tester |
 | --- | --- | --- | --- | --- | --- | --- | --- |
