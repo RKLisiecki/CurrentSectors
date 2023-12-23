@@ -15,6 +15,8 @@ The CurrentSectors package for R Empowers drilling down stock quotes across sect
 
 `printSectorStructure()`
  - prints the nested structure of sectors and industries
+`listCompanies()`
+ - produces a dataframe of companies from a given country and sector or industry
 
 \emph{Included datasets}
 
@@ -30,4 +32,4 @@ The CurrentSectors package for R Empowers drilling down stock quotes across sect
 \author{
 R. Karol Lisiecki
 }
-\keyword { package }
+\keyword {package}
