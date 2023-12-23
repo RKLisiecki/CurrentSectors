@@ -45,7 +45,7 @@ printSectorStructure <- function() {
     # line item creation
     sec_line <- paste("|-", sector, " (i.e.", name, ", ", ticker, ")\n", sep = "")
     cat(sec_line)
-    Sys.sleep(0.1)
+    Sys.sleep(0.03)
     no_of_indsts <- nrow(sec_inds[sec_inds$Sector==sector,])
     # drawing the industry nested elements
     for(j in 1:no_of_indsts) {
@@ -54,9 +54,9 @@ printSectorStructure <- function() {
       name <- sec_inds[sec_inds$Sector==sector,][j, 4]
       ind_line <- paste("  |---", industry, " (i.e. ", name, ", ", ticker, ")\n", sep = "")
       cat(ind_line)
-      Sys.sleep(0.02)
+      Sys.sleep(0.01)
     }
     cat("\n")
-    Sys.sleep(0.05)
+    Sys.sleep(0.02)
   }
 }

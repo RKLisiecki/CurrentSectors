@@ -29,8 +29,10 @@ The CurrentSectors package for R Empowers drilling down stock quotes across sect
 
 `forex_timeseries`
  - historical monthly bid prices of EURUSD and EURNOK
+
 }
 \author{
 R. Karol Lisiecki
+
 }
 \keyword {package}
