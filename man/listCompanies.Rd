@@ -24,7 +24,7 @@ listCompanies(
 A dataframe of companies with 6 columns (Name, Ticker, Sector, Industry, Currency)
 }
 \description{
-`listCompaniese()` produces a dataframe
+listCompanies() produces a dataframe
 of the companies of a given
 country and sector (or industry) crossection.
 }
@@ -38,7 +38,8 @@ should be cut off from the desired result.
 }
 \examples{
 
-listCompanies("Italy", "Technology")#'
+listCompanies("Italy", "Technology")
+
 listCompanies("USA", industry = "Solar", market_cap_thresh = 1000000000)
 
 # Author: R. Karol Lisiecki

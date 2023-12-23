@@ -13,21 +13,23 @@ The CurrentSectors package for R Empowers drilling down stock quotes across sect
 
 \emph{Included functions}
 
-`printSectorStructure()`
+printSectorStructure()
  - prints the nested structure of sectors and industries
 
-`listCompanies()`
+
+listCompanies()
  - produces a dataframe of companies from a given country and sector or industry
+
 
 \emph{Included datasets}
 
-`company_database`
+company_database
  - company overviews for 2104 European and American stocks
 
-`company_timeseries`
+company_timeseries
  - historical monthly stock prices of the above stocks
 
-`forex_timeseries`
+forex_timeseries
  - historical monthly bid prices of EURUSD and EURNOK
 
 }

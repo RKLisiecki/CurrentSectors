@@ -1,8 +1,8 @@
 #' Print the nested structure of sectors and industries
 #'
-#' `printSectorStructure()` handles a console printout
+#' printSectorStructure() handles a console printout
 #' of the nested strucure of sectors and industries
-#' available in the `company_database` dataset.
+#' available in the company_database dataset.
 #'
 #' For each sector and industry it also prints an example
 #' of a company name and Yahoo ticker on the same line.

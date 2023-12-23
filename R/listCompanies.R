@@ -1,6 +1,6 @@
 #' Produces a dataframe of companies from a given country and sector or industry
 #'
-#' `listCompaniese()` produces a dataframe
+#' listCompanies() produces a dataframe
 #' of the companies of a given
 #' country and sector (or industry) crossection.
 #'
@@ -19,7 +19,8 @@
 #' @returns A dataframe of companies with 6 columns (Name, Ticker, Sector, Industry, Currency)
 #' @examples
 #'
-#' listCompanies("Italy", "Technology")#'
+#' listCompanies("Italy", "Technology")
+#'
 #' listCompanies("USA", industry = "Solar", market_cap_thresh = 1000000000)
 #'
 #' # Author: R. Karol Lisiecki
