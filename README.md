@@ -150,6 +150,7 @@ Każdy test musi być wykonywany w notatniku R Markdown a scenariusz musi zosta�
 4. Instalacją najnowszej wersji biblioteki CurrentSectors z repozytorium zdalnego (`install_github("RKLisiecki/CurrentSectors", force = TRUE)`).
 5. Załadowaniem biblioteki (`library(CurrentSectors)`).
 6. Ponownym wywołaniem `sessionInfo()`.
+
 Dalej tester wykonuje scenariusz testowy, po wykonaniu którego powinien:
 1. Odłączyć bibliotekę (`detach(package:CurrentSectors)`).
 2. Odinstalować bibliotekę (`remove.packages("CurrentSectors")`) - **to powinno być ostatnie polecenie w pliku testu**.
