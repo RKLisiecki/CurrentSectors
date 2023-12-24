@@ -36,8 +36,8 @@ listCompanies <- function(country, sector=NULL, industry=NULL, market_cap_thresh
   tryCatch(
     {
       ifelse(is.null(industry),
-             result <- company_database[company_database$Country==country & company_database$Sector==sector, cols],
-             result <- company_database[company_database$Country==country & company_database$Industry==industry, cols])
+             result <- CurrentSectors::company_database[CurrentSectors::company_database$Country==country & CurrentSectors::company_database$Sector==sector, cols],
+             result <- CurrentSectors::company_database[CurrentSectors::company_database$Country==country & CurrentSectors::company_database$Industry==industry, cols])
       if(!is.null(market_cap_thresh))
              result <- result[result$EURMarketCap > market_cap_thresh, ]
       result <- result[,1:6]
