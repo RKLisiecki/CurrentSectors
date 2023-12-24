@@ -21,6 +21,41 @@ Dokumentacja biblioteki R Current Sectors przygotowana pod kątem zajęć z Inż
 CurrentSectors
 ### Krótki opis ze wskazaniem celów: 
 biblioteka języka R wspomagająca analizę notowań spółek giełdowych w przekrojach sektorowych i geograficznych.
+### Dane dołączone (wbudowane)
+
+#### Źródło danych
+Dane dotyczące danych finansowych oraz klasyfikacji sektorowej i branżowej spółek pochodzą z portalu Yahoo Finance. Uzyskano je w dokumentowanym skrótowo (w prezentacji prototypu) procesie web-scrapingu w trakcie trwania projektu. Wykorzystywano zarówno model oparty o specjalistyczne API, jak też zapis i parsowanie stron internetowych.
+
+Źródłem użytych nazw spółek są alternatywnie: 
+- ponadnarodowa giełda Euronext (dla akcji europejskich z wyłączeniem niektórych niemieckich), 
+- Dom Maklerski Alior Banku (dla akcji amerykańskich i większości niemieckich) 
+- portal Yahoo Finance (dla około 20 pozaniemieckich walorów europejskich).
+
+Źródłem klasyfikacji geograficznej spółek są znaki początkowe globalnie unikatowego dla każdej serii akcji spółki kodu ISIN (International Securities Identification Number) nadawanego przy uruchamianiu pierwszej oferty publicznej (ang. IPO - Initial Public Offer). Pierwsze dwa z dwunastu znaków tego kodu alfanumerycznego określają zapisaną skrótowo (wg standardu ISO 3106)
+nazwę państwa. Źródłem danych o numerach ISIN wszystkich walorów w zbiorach danych są alternatywnie Euronext oraz DM Alior Banku. W zakresie geograficznym znajdują się firmy z USA, Niemiec, Francji, Hiszpanii, Włoch, Portugalii, Holandii, Norwegii oraz Belgii.
+
+#### Klasyfikacja sektorowo-branżowa
+
+Wszystkie występujące w zbiorach danych spółki sklasyfikowane są według zagnieżdżonego modelu `sector-industry` użytego przez Yahoo Finance. Poczynając od wersji 0.3.0 biblioteki przestajemy tę kategoryzację tłumaczyć na język polski jako "sektorowo-przemysłową" i przechodzimy do określenia "sektorowo-branżowa". Nie posiadamy **definicji** elementów tego modelu ponad to, że sektory (`sectors`) są nadrzędne do branż (`industries`). Model jest hierarchiczny, jak szeroko używana w statystyce publicznej klasyfikacja działalności gospodarczych **NACE**, ale poza tym jest kompletnie odmienny:
+- nie jest usankcjonowany prawnie,
+- nie udostępnia dokumentacji metodycznej,
+- nie klasyfikuje rozłącznie typów wykonywanej pracy.
+
+Model Yahoo Finance jest uproszczeniem systemów **GICS** (Global Industry Classification Standard) oraz **ICB** (Industry Classification Benchmark). Ma charakter produktowy. Występuje w nim 140 szczegółowych branż połączonych w 11 sektorów:
+- Basic Materials (materiały podstawowe) - zarówno wydobycie różnych surowców, jak też produkcja materiałów budowlanych i półproduktów chemicznych; węgiel koksujący jest właśnie w tym sektorze; łącznie 13 branż,
+- Communication Services (usługi komunikacyjne) - firmy związane z mediami tradycyjnymi, cyfrowymi, jak też telekomunikacyjne; łącznie 7 branż,
+- Consumer Cyclical (cykliczne konsumenckie) - dostawcy prod. i usług, dla których popyt wysoce uzależniony jest od występujących cyklicznie nadwyżek dochodów konsumenckich: dóbr luksusowych, ubrań, sklepów internetowych, nieruchomości mieszkalnych, aut; łącznie 23 branże,
+- Consumer Defensive (konsumenckie pierwszej potrzeby) - producenci i dystrybutorzy żywności, używek, jak też dostawcy usług edukacyjnych; łącznie 12 branż,
+- Energy (surowce energetyczne) - firmy wydobywające, przetwarzającę oraz dystrybuujące ropę, gaz i węgiel; łącznie 7 branż,
+- Financial Services (usługi finansowe) - spółki działające na rynku kapitałowym, ubezpieczeniowym i usług finansowych; łącznie 14 branż,
+- Healthcare (ochrona zdrowia) - spółki dostarczające produkty i usługi medyczne lub farmaceutyczne; łącznie 11 branż,
+- Industrials (przemysł ciężki) - firmy produkujące maszyny, urządzenia, infrastrukturę oraz świadczące związane z tym usługi; łącznie 25 branż,
+- Real Estate (nieruchomości) - deweloperzy nieruchomości niemieszkalnych,  specjalistycznych, dostawcy usług towarzyszących oraz specjalistyczne fundusze powiernicze; łącznie 10 branż,
+- Technology (technologie) - producenci i dystrybutorzy sprzętu elektronicznego, dostawcy oprogramowania i usług informatycznych, jak też spółki związane z energetyką solarną; łącznie 12 branż;
+- Utilities (usługi komunalne) - producenci i dostawcy usług wodociągowych, gazowych i energetycznych; łącznie 6 branż.
+ 
+
+
 
 ## 2. Prawa autorskie
 ### Członkowie zespołu:
@@ -48,10 +83,11 @@ Opis wymagań jest adekwatny dla użytkowników, którzy zainstalowali oraz zał
 | Id | Nazwa | Opis | Priorytet | Typ |
 | --- | --- | --- | :---: | :---: |
 | F.CD.1 | Wyświetlenie/przyłączenie do środowiska R danych dołączonych | Wywołanie danych dołączonych wraz z biblioteką po nazwie podzbioru powoduje ich wyświetlenie oraz umożliwia jawne włączenie do środowiska lokalnego. | 1 | F |
+| F.CD.1.2 | Zakres i jakość danych dołączonych | W zbiorach danych nie brakuje więcej niż 10 najważniejszych spółek notowanych na giełdzie i właściwych zakresowi geograficznemu (FR, US, IT, BE, NO, PT, DE, ES, NL) W zbiorach danych wszystkie spółki są skategoryzowane klasyfikacją Yahoo Finance i nie ma spółek bez szeregów czasowych notowań. | 1 | F |
 | F.CD.2 | Wyświetlanie plików pomocy | Zapytanie za pośrednictwem funkcji `help(object)` o zbiór danych lub funkcję biblioteki powoduje wyświetlenie treści odpowiedniego pliku pomocy. | 1 | F |
-| F.CD.3 | Tworzenie tabel zawężonych list spółek - funkcja `listCompanies(country, sector, industry,...)` | Funkcja z obligatoryjnymi parametrami tekstowymi nazwy kraju (`country`) i nazwy sektora (`sector`) lub nazwy przemysłu (`industry`)  zwraca w formacie tabeli (struktury `data.frame`) listę spółek w tak określonym przekroju wraz ze szczegółami: **nazwami, symbolami, ich przemysłami, sektorami, krajami rejestracji** oraz **walutami kwotowania**. | 1 | F |
+| F.CD.3 | Tworzenie tabel zawężonych list spółek - funkcja `listCompanies(country, sector, industry,...)` | Funkcja z obligatoryjnymi parametrami tekstowymi nazwy kraju (`country`) i nazwy sektora (`sector`) lub nazwy branży (`industry`)  zwraca w formacie tabeli (struktury `data.frame`) listę spółek w tak określonym przekroju wraz ze szczegółami: **nazwami, symbolami, ich sektorami, branżami, krajami rejestracji** oraz **walutami kwotowania**. | 1 | F |
 | F.CD.3.1 | Tworzenie tabel bardziej zawężonych list spółek - funkcja `listCompanies(country, sector, industry, market_cap_thresh)` | Ta sama funkcyja, co w **F.CD.3** z dodatkowym, opcjonalnym parametrem liczbowym progowego **poziomu kapitalizacji rynkowej** (`market_cap_thresh`) ten sam rezultat zawęża do spółek przekraczających określony poziom kapitalizacji rynkowej w Euro.  | 1 | F |
-| F.CD.4 | Drukowanie zagnieżdżonej listy sektorów i przemysłów wraz z przykładami spółek - funkcja `printSectorStructure()` | Funkcja nieprzyjmująca parametrów zwraca wydruk zagnieżdżonej listy przemysłow i sektorów dostępnych w bazie wraz z przykładami firm i ich tickerów dla każdego z jej elementów. Lista wypisywana jest przez kilka sekund symulując wydruk. | 1 | F |
+| F.CD.4 | Drukowanie zagnieżdżonej listy sektorów i branż wraz z przykładami spółek - funkcja `printSectorStructure()` | Funkcja nieprzyjmująca parametrów zwraca wydruk zagnieżdżonej listy sektorów i branż dostępnych w bazie wraz z przykładami firm i ich tickerów dla każdego z jej elementów. Lista wypisywana jest przez kilka sekund symulując wydruk. | 1 | F |
 
 #### **Grupa nr 2 (database):** zapis i aktualizacja szeregów czasowych
 
@@ -65,7 +101,7 @@ Opis wymagań jest adekwatny dla użytkowników, którzy zainstalowali oraz zał
 
 | Id | Nazwa | Opis | Priorytet | Typ |
 | --- | --- | --- | :---: | :---: |
-| F.SS.1 | Tworzenie tabeli struktury sektorowej - funkcja `sStructure(country, path)` | Funkcja z obligatoryjnym parametrem nazwy państwa (`country`) oraz opcjonalnym parametrem `path` zwraca w formacie tabeli aktualny zbiór wartości łącznych kapitalizacji (`Market cap total`) w Euro oraz udziałów w kapitalizacji łącznej w państwie (`Total market cap share`) wszystkich spółek skategoryzowanych w tych sektorach i przemysłach. Funkcja przelicza odpowiednie wartości do Euro, jeżeli to konieczne. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `path` ich  wersje zapisane na dysku użytkownika (F.DB.1) | 1 | F |
+| F.SS.1 | Tworzenie tabeli struktury sektorowej - funkcja `sStructure(country, path)` | Funkcja z obligatoryjnym parametrem nazwy państwa (`country`) oraz opcjonalnym parametrem `path` zwraca w formacie tabeli aktualny zbiór wartości łącznych kapitalizacji (`Market cap total`) w Euro oraz udziałów w kapitalizacji łącznej w państwie (`Total market cap share`) wszystkich spółek skategoryzowanych w tych sektorach i branżach. Funkcja przelicza odpowiednie wartości do Euro, jeżeli to konieczne. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `path` ich  wersje zapisane na dysku użytkownika (F.DB.1) | 1 | F |
 | F.SS.2 | Tworzenie wykresu struktury sektorowej - funkcja `sStructureChart(country, path)` | Funkcja z opcjonalnymi parametrami nazwy państwa (`country`) oraz `path` zwraca wykres powierzchniowy udziałów poszczególnych sektorów w kapitalizacji łącznej spółek. Funkcja wykorzystuje przeliczenie odpowiednich wartości do Euro, gdy to konieczne. Domyślnie struktura prezentowana jest dla całego zbioru spółek a uzupełnienie parametru nazwy państwa zawęża rezultat geograficznie. Wykres zawiera informatywny tytuł. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `path` ich wersje zapisane na dysku użytkownika (F.DB.1) | 1 | F |
 
 
@@ -81,7 +117,7 @@ Opis wymagań jest adekwatny dla użytkowników, którzy zainstalowali oraz zał
 
 | Id | Nazwa | Opis | Priorytet | Typ |
 | --- | --- | --- | :---: | :---: |
-| F.STA.1 | Tworzenie tabeli raportu analizy technicznej przekroju sektorowo-geograficznego spółek - funkcja `TAReport(country, sector, path)` | Funkcja z obligatoryjnymi parametrami nazwy państwa (`country`) oraz nazwy sektora (`sector`) i opcjonalnym parametrem `path` zwraca w formie tabeli (struktury `data.frame`) raport analizy technicznej wszystkich spółek wybranego przekroju sektorowo-geograficznego. Wiersze tabeli odpowiadają kolejnym spółkom. Kolumny tabeli, to `Name` - nazwa spółki, `Ticker` - użyty symbol giełdowy, `Industry` - kategoria przemysłu spółki, `MA` - kategoria trendu notowań (`bullish` lub `bearish`) ustalona na podstawie relacji aktualnej ceny do wartości 11-okresowej średniej ruchomej, `RSI` - kategoria oscylatora Relative Strength Index (`overbought`, `no signal` lub `oversold`) ustalona na podstawie 14-okresowej wartości wskaźnika RSI w jednym z przedziałów (<70-100>, [30-70], <0, 30>). Domyślnie funkcja wykorzystuje dane dołączone a w przypadku ustaleniu wartości parametru `path` ich wersje zapisane na dysku użytkownika (F.DB.1) | 1 | F |
+| F.STA.1 | Tworzenie tabeli raportu analizy technicznej przekroju sektorowo-geograficznego spółek - funkcja `TAReport(country, sector, path)` | Funkcja z obligatoryjnymi parametrami nazwy państwa (`country`) oraz nazwy sektora (`sector`) i opcjonalnym parametrem `path` zwraca w formie tabeli (struktury `data.frame`) raport analizy technicznej wszystkich spółek wybranego przekroju sektorowo-geograficznego. Wiersze tabeli odpowiadają kolejnym spółkom. Kolumny tabeli, to `Name` - nazwa spółki, `Ticker` - użyty symbol giełdowy, `Industry` - branża spółki, `MA` - kategoria trendu notowań (`bullish` lub `bearish`) ustalona na podstawie relacji aktualnej ceny do wartości 11-okresowej średniej ruchomej, `RSI` - kategoria oscylatora Relative Strength Index (`overbought`, `no signal` lub `oversold`) ustalona na podstawie 14-okresowej wartości wskaźnika RSI w jednym z przedziałów (<70-100>, [30-70], <0, 30>). Domyślnie funkcja wykorzystuje dane dołączone a w przypadku ustaleniu wartości parametru `path` ich wersje zapisane na dysku użytkownika (F.DB.1) | 1 | F |
 
 ### Wymagania pozfunkcjonalne
 
@@ -167,7 +203,7 @@ Dalej tester wykonuje scenariusz testowy, po wykonaniu którego powinien:
 | TF.CD.1 | Test działania danych wbudowanych | Zbiory testowe zostają wywołane po nazwach, po czym zostają przypisane do zmiennych w środowisku lokalnym. Tester sprawdza, czy wywołanie zmiennych w środowisku powoduje ich wyświetlenie. Potem dokonuje inspekcji rozmiarów danych, aby potwierdzić, czy jest zgodna z opisem w pliku pomocy.  | ... | ... | --- | --- | --- |
 | TF.CD.2 | Test działania plików pomocy | Pliki pomocy zostają wywołane dla samej biblioteki (`?CurrentSectors`), wszystkich funkcji oraz zbiorów danych z użyciem operatora `?` oraz funkcji `help()`. Tester sprawdza, czy pliki wyświetlają się w zakładce `Help` RStudio oraz czy ich treść nie jest sprzeczna z wymaganiami funkcjonalnymi. Dla funkcji weryfikuje działanie elementu `Run_examples`. | ... | ... | --- | --- | --- |
 | TF.CD.3 | Test tworzenia tabel list spółek | ... | ... | ... | --- | --- | --- |
-| TF.CD.4 | Test drukowania zagnieżdżonej listy sektorów i przemysłów z przykładami spółek | ... | ... | ... | --- | --- | --- |
+| TF.CD.4 | Test drukowania zagnieżdżonej listy sektorów i branż z przykładami spółek | ... | ... | ... | --- | --- | --- |
 | TF.DB.1 | Test zapisu danych dołączonych na dysk | ... | ... | ... | --- | --- | --- |
 | TF.DB.1 | Test aktualizacji bazy plików na dysku użytkownika | ... | ... | ... | --- | --- | --- |
 | TF.SS.1 | Test tworzenia tabel struktury sektorowej | ... | ... | ... | --- | --- | --- |
