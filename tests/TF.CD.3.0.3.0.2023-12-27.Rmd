@@ -1,0 +1,45 @@
+---
+title: "TF.CD.3.0.3.0.2023-12-27"
+author: "Michał_Bartkiewicz"
+date: "2023-12-27"
+output: html_document
+---
+
+```{r}
+sessionInfo()
+
+library(devtools)
+
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+
+library(CurrentSectors)
+
+sessionInfo()
+```
+
+##Test: TF.CD.3
+
+```{r}
+#Test case 1: Poprawne zapytanie dla kraju i sektora.
+listCompanies("USA", "Technology")
+#Test case 2: Poprawne zapytanie dla kraju i branży.
+listCompanies("Belgium", industry = "Building Materials")
+#Test case 3: Brak spółek dla określonych kryteriów.
+listCompanies("Canada", "Healthcare")
+#Test case 4: Nieprawidłowe wejście (brak obowiązkowego parametru).
+listCompanies("USA")
+```
+
+##Test: TF.CD.3.1
+
+```{r}
+#Test case 5: Prawidłowe zapytanie z dodatkowym parametrem liczbowym.
+listCompanies("Spain", "Technology", market_cap_thresh = 1000000000)
+#Test case 6: Brak spółek dla określonych kryteriów liczbowych.
+listCompanies("USA",  industry = "Aerospace & Defense", market_cap_thresh = 100000000000000)
+```
+
+```{r}
+detach("package:CurrentSectors", unload = TRUE)
+remove.packages("CurrentSectors")
+```
