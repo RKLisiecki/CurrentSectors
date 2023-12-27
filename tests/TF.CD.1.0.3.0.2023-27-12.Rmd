@@ -1,0 +1,41 @@
+---
+title: "TF.CD.1.0.3.0.2023-12-27"
+author: "Michał_Bartkiewicz"
+date: "2023-12-27"
+output: html_document
+---
+
+```{r}
+sessionInfo()
+
+library(devtools)
+
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+
+library(CurrentSectors)
+
+sessionInfo()
+```
+
+##Test: TF.CD.1
+
+```{r}
+#company_database
+data(company_database)
+head(company_database)
+
+#company_timeseries
+data(company_timeseries)
+head(company_timeseries)
+
+#forex_timeseries
+data(forex_timeseries)
+head(forex_timeseries)
+```
+
+```{r}
+detach("package:CurrentSectors", unload = TRUE)
+remove.packages("CurrentSectors")
+```
+
+
