@@ -195,7 +195,7 @@ Dalej tester wykonuje scenariusz testowy, po wykonaniu którego powinien:
 5. Zmienić nazwy plików według schematu:
 **[Identyfikator].[WersjaBiblioteki].[RRRR-MM-DD].[RozszerzeniePliku]**
 (zachowując poprzednie rozszerzenia plików oraz zgodność Identyfikatorów z tymi w tabeli testów u dołu tego dokumentu).
-6. Umieścić oba pliki w katalogu `tests` tego repozytorium, w gałęzi `master`.
+6. Umieścić plik `Rmd` w katalogu `tests` tego repozytorium, w gałęzi `master` a plik `html` zachować na potrzeby własnych analiz.
 7. Uzupełnić wpis wykonywanego scenariusza w tabeli testów (testy z tym samym Id w jednym rzędzie, chronologicznie, podpis inicjałami).
 
 | Identyfikator | Nazwa | Scenariusz | Wynik | Wersja biblioteki | Data | Uwagi | Tester |
