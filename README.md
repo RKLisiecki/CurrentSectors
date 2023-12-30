@@ -32,7 +32,7 @@ Dane dotyczące danych finansowych oraz klasyfikacji sektorowej i branżowej sp�
 - portal Yahoo Finance (dla około 20 pozaniemieckich walorów europejskich).
 
 Źródłem klasyfikacji geograficznej spółek są znaki początkowe globalnie unikatowego dla każdej serii akcji spółki kodu ISIN (International Securities Identification Number) nadawanego przy uruchamianiu pierwszej oferty publicznej (ang. IPO - Initial Public Offer). Pierwsze dwa z dwunastu znaków tego kodu alfanumerycznego określają zapisaną skrótowo (wg standardu ISO 3106)
-nazwę państwa. Źródłem danych o numerach ISIN wszystkich walorów w zbiorach danych są alternatywnie Euronext oraz DM Alior Banku. W zakresie geograficznym znajdują się firmy z USA, Niemiec, Francji, Hiszpanii, Włoch, Portugalii, Holandii, Norwegii oraz Belgii.
+nazwę państwa. Źródłem danych o numerach ISIN wszystkich walorów w zbiorach danych są alternatywnie Euronext oraz DM Alior Banku. W zakresie geograficznym znajdują się firmy z USA, Niemiec, Francji, Hiszpanii, Włoch, Portugalii, Holandii oraz Belgii.
 
 #### Klasyfikacja sektorowo-branżowa
 
@@ -83,7 +83,7 @@ Opis wymagań jest adekwatny dla użytkowników, którzy zainstalowali oraz zał
 | Id | Nazwa | Opis | Priorytet | Typ |
 | --- | --- | --- | :---: | :---: |
 | F.CD.1 | Wyświetlenie/przyłączenie do środowiska R danych dołączonych | Wywołanie danych dołączonych wraz z biblioteką po nazwie podzbioru powoduje ich wyświetlenie oraz umożliwia jawne włączenie do środowiska lokalnego. | 1 | F |
-| F.CD.1.2 | Zakres i jakość danych dołączonych | W zbiorach danych nie brakuje więcej niż 10 najważniejszych spółek notowanych na giełdzie i właściwych zakresowi geograficznemu (FR, US, IT, BE, NO, PT, DE, ES, NL) W zbiorach danych wszystkie spółki są skategoryzowane klasyfikacją Yahoo Finance i nie ma spółek bez szeregów czasowych notowań. | 1 | F |
+| F.CD.1.2 | Zakres i jakość danych dołączonych | W zbiorach danych nie brakuje więcej niż 10 najważniejszych spółek notowanych na giełdzie i właściwych zakresowi geograficznemu (FR, US, IT, BE, PT, DE, ES, NL) W zbiorach danych wszystkie spółki są skategoryzowane klasyfikacją Yahoo Finance i nie ma spółek bez szeregów czasowych notowań. | 1 | F |
 | F.CD.2 | Wyświetlanie plików pomocy | Zapytanie za pośrednictwem funkcji `help(object)` o zbiór danych lub funkcję biblioteki powoduje wyświetlenie treści odpowiedniego pliku pomocy. | 1 | F |
 | F.CD.3 | Tworzenie tabel zawężonych list spółek - funkcja `listCompanies(country, sector, industry,...)` | Funkcja z obligatoryjnymi parametrami tekstowymi nazwy kraju (`country`) i nazwy sektora (`sector`) lub nazwy branży (`industry`)  zwraca w formacie tabeli (struktury `data.frame`) listę spółek w tak określonym przekroju wraz ze szczegółami: **nazwami, symbolami, ich sektorami, branżami, krajami rejestracji** oraz **walutami kwotowania**. | 1 | F |
 | F.CD.3.1 | Tworzenie tabel bardziej zawężonych list spółek - funkcja `listCompanies(country, sector, industry, market_cap_thresh)` | Ta sama funkcyja, co w **F.CD.3** z dodatkowym, opcjonalnym parametrem liczbowym progowego **poziomu kapitalizacji rynkowej** (`market_cap_thresh`) ten sam rezultat zawęża do spółek przekraczających określony poziom kapitalizacji rynkowej w Euro.  | 1 | F |

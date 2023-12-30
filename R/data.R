@@ -1,7 +1,7 @@
-#' Company overviews of 2104 European and American stocks (from Yahoo Finance)
+#' Company overviews of 2028 European and American stocks (from Yahoo Finance)
 #'
 #' A subset of Yahoo Finance profile and statistics data of 1161 US and
-#' 943 European companies (BE, DE, ES, FR, IT, NL, NO, PT)
+#' 943 European companies (BE, DE, ES, FR, IT, NL, PT)
 #' plus metadata about their stock timeseries in this library
 #' plus their USD and EUR market cap values after conversion
 #' at rate dated at last observation.
@@ -25,7 +25,7 @@
 #' @source <https://finance.yahoo.com/quote/>
 "company_database"
 
-#' Historical stock prices - monthly closes of 2104 stocks (from Yahoo Finance)
+#' Historical stock prices - monthly closes of 2028 stocks (from Yahoo Finance)
 #'
 #' A subset of Yahoo Finance timeseries history for 2104 stock
 #' monthly close prices adjusted for splits and not for dividends.
@@ -44,18 +44,16 @@
 #' @source <https://finance.yahoo.com/quote/.../history>
 "company_timeseries"
 
-#' Historical FOREX bid prices - monthly close of EURUSD and EURNOK (from Yahoo Finance)
+#' Historical FOREX bid prices - monthly close of EURUSD(from Yahoo Finance)
 #'
-#' A subset of Yahoo Finance timeseries history for EURUSD (`EURUSD=X`)
-#' and EURNOK (`EURNOK=X`) monthly close bid prices.
-#' Covering the timespan from January 2018 to December 2023.
+#' A subset of Yahoo Finance timeseries history for EURUSD (`EURUSD=X`)#'
+#' covering the timespan from January 2018 to December 2023.
 #' Columns names of this dataset DO NOT correspond to Yahoo Finance tickers
 #' and ARE NOT available in the `company_database` dataset.
 #'
 #' @format An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2 coumns:
 #' \describe{
 #'   \item{EURUSD}{EUR/USD bid FX spot rate}
-#'   \item{EURNOK}{EUR/NOK bid FX spot rate}
 #' }
 #' @source <https://finance.yahoo.com/quote/.../history>
 "forex_timeseries"
