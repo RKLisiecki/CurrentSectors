@@ -18,7 +18,7 @@
 #' @export
 saveData <- function(path) {
   # Funkcja z obligatoryjnym parametrem ścieżki dyskowej w formacie tekstowym
-  # zapisuje w tej lokalizacji dane dołączone biblioteki w plikach .csv.
+  # zapisuje w tej lokalizacji dane dołączone biblioteki w plikach .Rda.
   # Umożliwia to ich późniejszą aktualizację.
   tryCatch(
     {

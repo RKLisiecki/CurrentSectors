@@ -93,7 +93,7 @@ Opis wymagań jest adekwatny dla użytkowników, którzy zainstalowali oraz zał
 
 | Id | Nazwa | Opis | Priorytet | Typ |
 | --- | --- | --- | :---: | :---: |
-| F.DB.1 | Zapis danych dołączonych biblioteki na dysku użytkownika - funkcja `saveData(path)` | Funkcja z obligatoryjnym parametrem ścieżki dyskowej w formacie tekstowym  zapisuje w tej lokalizacji dane dołączone biblioteki w plikach `.csv`. Umożliwia to ich późniejszą aktualizację. | 1 | F |
+| F.DB.1 | Zapis danych dołączonych biblioteki na dysku użytkownika - funkcja `saveData(path)` | Funkcja z obligatoryjnym parametrem ścieżki dyskowej w formacie tekstowym  zapisuje w tej lokalizacji dane dołączone biblioteki w plikach `.Rda`. Umożliwia to ich późniejszą aktualizację. | 1 | F |
 | F.DB.2 | Aktualizowanie baz szeregów czasowych użytkownika - funkcja `updateData(path)` | Funkcja z obligatoryjnym parametrem ścieżki dyskowej (jak w F.DB.1) aktualizuje szeregi czasowe notowań uprzednio zapisanych przez użytkownika funkcją `saveData(path)`.  | 1 | F |
 
 
