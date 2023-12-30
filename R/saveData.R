@@ -1,4 +1,4 @@
-#' Saves libraries data files on user's disk (in Rda format)
+#' Saves library's data files on user's disk (in Rda format)
 #'
 #' saveData() writes all library datasets
 #' inside the folder, for which
@@ -6,7 +6,7 @@
 #'
 #' Enables further data updates
 #'
-#' @param path A character vector
+#' @param path=NULL A character vector
 #'
 #' @examples
 #'

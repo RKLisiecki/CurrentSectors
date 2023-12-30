@@ -2,12 +2,12 @@
 % Please edit documentation in R/saveData.R
 \name{saveData}
 \alias{saveData}
-\title{Saves libraries data files on user's disk (in Rda format)}
+\title{Saves library's data files on user's disk (in Rda format)}
 \usage{
 saveData(path)
 }
 \arguments{
-\item{path}{A character vector}
+\item{path=NULL}{A character vector}
 }
 \description{
 saveData() writes all library datasets
