@@ -20,6 +20,9 @@ printSectorStructure()
 listCompanies()
  - produces a dataframe of companies from a given country and sector or industry
 
+saveData()
+ - saves library datasets as Rda files in an existing users's directory
+
 
 \emph{Included datasets}
 

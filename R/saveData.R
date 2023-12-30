@@ -1,8 +1,8 @@
 #' Saves library's data files on user's disk (in Rda format)
 #'
 #' saveData() writes all library datasets
-#' inside the folder, for which
-#' the path is given as the function parameter
+#' inside an existing folder, when
+#' it's path is given as the function parameter.
 #'
 #' Enables further data updates
 #'
@@ -10,7 +10,7 @@
 #'
 #' @examples
 #'
-#' saveData("./")
+#' saveData("./")  # Saves datasets to the current working directory
 #'
 #'
 #' # Author: R. Karol Lisiecki
@@ -20,5 +20,28 @@ saveData <- function(path) {
   # Funkcja z obligatoryjnym parametrem ścieżki dyskowej w formacie tekstowym
   # zapisuje w tej lokalizacji dane dołączone biblioteki w plikach .csv.
   # Umożliwia to ich późniejszą aktualizację.
-  return("Data saved")
+  tryCatch(
+    {
+      info <- NULL
+      if(dir.exists(path)) {
+        company_database <- CurrentSectors::company_database
+        company_timeseries <- CurrentSectors::company_timeseries
+        forex_timeseries <- CurrentSectors::forex_timeseries
+        save(company_database,
+             file = paste(path, "company_database.rda", sep = ""))
+        save(company_timeseries,
+             file = paste(path, "company_timeseries.rda", sep = ""))
+        save(forex_timeseries,
+             file = paste(path, "forex_timeseries.rda", sep = ""))
+        info <- paste("Data save in: ", path, "\nwas succesful.")
+      }
+      else info <- "Non existent directory,\n data save unseccesful."
+    },
+    error = function(cond) {
+      message(cat("\nData save was unsuccesful."))
+    },
+    finally = {
+      return(cat(info))
+    }
+  )
 }

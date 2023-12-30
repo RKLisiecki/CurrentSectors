@@ -7,19 +7,19 @@
 saveData(path)
 }
 \arguments{
-\item{path=NULL}{A character vector}
+\item{path}{A character vector}
 }
 \description{
 saveData() writes all library datasets
-inside the folder, for which
-the path is given as the function parameter
+inside an existing folder, when
+it's path is given as the function parameter.
 }
 \details{
 Enables further data updates
 }
 \examples{
 
-saveData("./")
+saveData("./")  # Saves datasets to the current working directory
 
 
 # Author: R. Karol Lisiecki
