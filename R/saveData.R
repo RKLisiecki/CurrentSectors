@@ -23,19 +23,21 @@ saveData <- function(path) {
   tryCatch(
     {
       info <- NULL
+      if(substr(path, nchar(path), nchar(path))=="/")
+        path <- substr(path, 1, nchar(path)-1)
       if(dir.exists(path)) {
         company_database <- CurrentSectors::company_database
         company_timeseries <- CurrentSectors::company_timeseries
         forex_timeseries <- CurrentSectors::forex_timeseries
         save(company_database,
-             file = paste(path, "company_database.rda", sep = ""))
+             file = paste(path, "/company_database.rda", sep = ""))
         save(company_timeseries,
-             file = paste(path, "company_timeseries.rda", sep = ""))
+             file = paste(path, "/company_timeseries.rda", sep = ""))
         save(forex_timeseries,
-             file = paste(path, "forex_timeseries.rda", sep = ""))
+             file = paste(path, "/forex_timeseries.rda", sep = ""))
         info <- paste("Data save in: ", path, "\nwas succesful.")
       }
-      else info <- "Non existent directory,\n data save unseccesful."
+      else info <- "Non-existent directory,\n data save unsuccesful."
     },
     error = function(cond) {
       message(cat("\nData save was unsuccesful."))
