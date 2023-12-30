@@ -6,7 +6,7 @@
 #'
 #' Enables further data updates
 #'
-#' @param path=NULL A character vector
+#' @param path A character vector
 #'
 #' @examples
 #'
