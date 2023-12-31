@@ -1,0 +1,93 @@
+---
+title: "Test funkcji sIndices"
+author: "R. Karol Lisiecki"
+date: "2023-12-31"
+output: html_document
+---
+Każdy test musi zostać poprzedzony restartem środowiska R, instalacją CurrentSectors z repozytorium zdalnego oraz załadowaniem biblioteki. Test musi rozpoczynać się wywołaniami funkcji sessionInfo(). Wszystkie wykonywane testy (z wyjątkiem tych "wyklikanych") powinny zostać zapisane w formie notatników Rmd ORAZ następnie wygenerowanych (knitterem) z nich plików html (wraz z zapisanym wyjściem komend) do katalogu tests w repozytorium. Format nazewnictwa powinien być zgodny ze strukturą:
+
+[Identyfikator].[WersjaBiblioteki].[RRRR-MM-DD].[RozszerzeniePliku]
+
+(wersja biblioteki sprawdzana jest w pliku DESCRIPTION w katalogu głównym)
+
+[ctrl Shift F10] - restart środowiska
+
+0. Informacje o środowisku.
+```{r}
+#sessionInfo()
+```
+
+
+1. Załadowanie devtools
+
+```{r}
+library(devtools)
+```
+2. Instalacja najnowszej wersji Current Sectors
+
+```{r}
+install_local(path = "C:/Users/de1ta/Documents/R/school/UG3/io/REPO2/CurrentSectors")
+#install_github("RKLisiecki/CurrentSectors", force = TRUE, silent = TRUE)
+```
+3. Załadowanie biblioteki
+
+```{r}
+library(CurrentSectors)
+```
+
+4. Sprawdzenie helpa
+
+```{r}
+?sIndices
+```
+
+
+5. Sprawdzenie, czy wywołanie funkcji bez parametrów nie wywołuje błędu.
+
+```{r}
+(all <- sIndices())
+```
+
+6. Sprawdzenie, czy wywołanie funkcji z poprawnym parametrem państwa oraz pustym parametrem ścieżki zwraca rezultat.
+
+```{r}
+(ita <- sIndices(country = "Italy"))
+```
+
+7. Zapisanie zbiorów danych na dysku i sprawdzenie, czy wywołanie wraz z parametrem ścieżki zwraca ten sam rezultat, co bez.
+```{r}
+path <- "./"
+saveData(path)
+ita2 <- sIndices(country = "Italy", path = path)
+(ita-ita2)
+```
+8. Wywołanie funkcji dla ośmiu państw, następnie sumowanie pierwszych kolumny (Basic Materials). 
+Następnie sprawdzenie, czy rezultat jest w przybliżeniu równy pierwszej kolumnie wywołania bez parametrów.
+```{r}
+usa <- sIndices("USA")
+ned <- sIndices("Netherlands")
+por <- sIndices("Portugal")
+fra <- sIndices("France")
+bel <- sIndices("Belgium")
+ger <- sIndices("Germany")
+ita <- sIndices("Italy")
+esp <- sIndices("Spain")
+all <-sIndices()
+sumi <- usa[,1] + ned[,1] + por[,1] + fra[,1] + bel[,1] + ger[,1] + ita[,1] + esp[,1]
+
+(all[, 1] - sumi)
+```
+
+
+8. Odłączenie biblioteki
+
+```{r}
+detach(package:CurrentSectors)
+```
+
+9. Odinstalowanie biblioteki
+
+```{r}
+remove.packages("CurrentSectors")
+```
+
