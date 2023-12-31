@@ -23,6 +23,9 @@ listCompanies()
 saveData()
  - saves library datasets as Rda files in an existing users's directory
 
+updateData()
+ - updates the library's datasets, which were saved in user's directory on disk
+
 sIndices()
  - calculates aggregate sector market capitalization time series
 
