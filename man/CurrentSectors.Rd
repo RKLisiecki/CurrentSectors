@@ -23,6 +23,8 @@ listCompanies()
 saveData()
  - saves library datasets as Rda files in an existing users's directory
 
+sIndices()
+ - calculates aggregate sector market capitalization time series
 
 \emph{Included datasets}
 
