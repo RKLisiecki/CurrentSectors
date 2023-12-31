@@ -21,7 +21,7 @@ An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2104 columns:
 company_timeseries
 }
 \description{
-A subset of Yahoo Finance timeseries history for 2104 stock
+A subset of Yahoo Finance timeseries history for 2028 stock
 monthly close prices adjusted for splits and not for dividends.
 Covering the timespan from January 2018 to December 2023.
 Column names of this dataset correspond to Yahoo Finance tickers

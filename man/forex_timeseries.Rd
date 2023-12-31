@@ -3,7 +3,7 @@
 \docType{data}
 \name{forex_timeseries}
 \alias{forex_timeseries}
-\title{Historical FOREX bid prices - monthly close of EURUSD(from Yahoo Finance)}
+\title{Historical FOREX bid prices - monthly close of EURUSD (from Yahoo Finance)}
 \format{
 An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2 coumns:
 \describe{

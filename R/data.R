@@ -27,7 +27,7 @@
 
 #' Historical stock prices - monthly closes of 2028 stocks (from Yahoo Finance)
 #'
-#' A subset of Yahoo Finance timeseries history for 2104 stock
+#' A subset of Yahoo Finance timeseries history for 2028 stock
 #' monthly close prices adjusted for splits and not for dividends.
 #' Covering the timespan from January 2018 to December 2023.
 #' Column names of this dataset correspond to Yahoo Finance tickers
@@ -44,7 +44,7 @@
 #' @source <https://finance.yahoo.com/quote/.../history>
 "company_timeseries"
 
-#' Historical FOREX bid prices - monthly close of EURUSD(from Yahoo Finance)
+#' Historical FOREX bid prices - monthly close of EURUSD (from Yahoo Finance)
 #'
 #' A subset of Yahoo Finance timeseries history for EURUSD (`EURUSD=X`)#'
 #' covering the timespan from January 2018 to December 2023.

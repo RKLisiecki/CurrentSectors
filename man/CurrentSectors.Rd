@@ -29,13 +29,13 @@ sIndices()
 \emph{Included datasets}
 
 company_database
- - company overviews for 2104 European and American stocks
+ - company overviews for 2028 European and American stocks
 
 company_timeseries
  - historical monthly stock prices of the above stocks
 
 forex_timeseries
- - historical monthly bid prices of EURUSD and EURNOK
+ - historical monthly bid prices of EURUSD
 
 }
 \author{
