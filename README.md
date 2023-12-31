@@ -208,10 +208,7 @@ Dalej tester wykonuje scenariusz testowy, po wykonaniu którego powinien:
 | TF.DB.1 | Test aktualizacji bazy plików na dysku użytkownika | ... | ... | ... | --- | --- | --- |
 | TF.SS.1 | Test tworzenia tabel struktury sektorowej | ... | ... | ... | --- | --- | --- |
 | F.SS.2 | Test tworzenia wykresów struktury sektorowej | ... | ... | ... | --- | --- | --- |
-| TF.STS.1 | Test tworzenia tabel wartości kapitalizacji w sektorach w czasie | Tester sprawdza, czy wywołanie funkcji bez parametrów nie wywołuje błędu. Tester sprawdza, czy wywołanie funkcji z poprawnym parametrem państwa oraz pustym parametrem ścieżki zwraca rezultat.
-Tester zapisuje zbiory danych na dysku i sprawdza, czy wywołanie wraz z parametrem ścieżki zwraca ten sam rezultat, co bez.
-Tester wywołuje funkcję dla ośmiu państw, następnie sumuje pierwsze kolumny (Basic Materials). 
-Następnie sprawdza, czy rezultat jest w przybliżeniu równy pierwszej kolumnie wywołania bez parametrów. | Pozytywny | 0.5.0 | 2023-12-31 | --- | RKL |
+| TF.STS.1 | Test tworzenia tabel wartości kapitalizacji w sektorach w czasie | Tester sprawdza, czy wywołanie funkcji bez parametrów nie wywołuje błędu. Tester sprawdza, czy wywołanie funkcji z poprawnym parametrem państwa oraz pustym parametrem ścieżki zwraca rezultat. Tester zapisuje zbiory danych na dysku i sprawdza, czy wywołanie wraz z parametrem ścieżki zwraca ten sam rezultat, co bez. Tester wywołuje funkcję dla ośmiu państw, następnie sumuje pierwsze kolumny (Basic Materials). Następnie sprawdza, czy rezultat jest w przybliżeniu równy pierwszej kolumnie wywołania bez parametrów. | Pozytywny | 0.5.0 | 2023-12-31 | --- | RKL |
 | TF.STS.2 | Test tworzenia wykresów wartości kapitalizacji w sektorach w czasie | ... | ... | ... | --- | --- | --- |
 | TF.STS.2 | Test tworzenia wykresów porównawczych relatywnych wyników ekonomicznych | ... | ... | ... | --- | --- | --- |
 | TF.STA.1 | Test tworzenia tabel raportów analizy technicznej przekrojów sektorowo-geograficznych | ... | ... | ... | --- | --- | --- |
