@@ -6,7 +6,7 @@
 #' plus their USD and EUR market cap values after conversion
 #' at rate dated at last observation.
 #'
-#' @format A data frame with 2104 rows and 13 columns:
+#' @format A data frame with 2026 rows and 13 columns:
 #' \describe{
 #'   \item{Name}{Company name on one of the Euronext exchanges or Polish brokerage houses}
 #'   \item{Ticker}{Company stock ticker used to collect data from Yahoo Finance}
@@ -25,15 +25,15 @@
 #' @source <https://finance.yahoo.com/quote/>
 "company_database"
 
-#' Historical stock prices - monthly closes of 2028 stocks (from Yahoo Finance)
+#' Historical stock prices - monthly closes of 2026 stocks (from Yahoo Finance)
 #'
-#' A subset of Yahoo Finance timeseries history for 2028 stock
+#' A subset of Yahoo Finance timeseries history for 2026 stock
 #' monthly close prices adjusted for splits and not for dividends.
 #' Covering the timespan from January 2018 to December 2023.
 #' Column names of this dataset correspond to Yahoo Finance tickers
 #' and the `Ticker`column in the `company_database` dataset.
 #'
-#' @format An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2104 columns:
+#' @format An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2026 columns:
 #' \describe{
 #'   \item{ABCA.PA}{ABC Arbitrage monthly close prices}
 #'   \item{...}{...}

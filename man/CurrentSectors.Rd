@@ -29,7 +29,7 @@ sIndices()
 \emph{Included datasets}
 
 company_database
- - company overviews for 2028 European and American stocks
+ - company overviews for 2026 European and American stocks
 
 company_timeseries
  - historical monthly stock prices of the above stocks
