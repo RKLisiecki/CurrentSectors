@@ -1,0 +1,173 @@
+---
+title: "Testy jakieś"
+author: "R. Karol Lisiecki"
+date: "2023-12-22"
+output: html_document
+---
+Każdy test musi zostać poprzedzony restartem środowiska R, instalacją CurrentSectors z repozytorium zdalnego oraz załadowaniem biblioteki. Test musi rozpoczynać się wywołaniami funkcji sessionInfo(). Wszystkie wykonywane testy (z wyjątkiem tych "wyklikanych") powinny zostać zapisane w formie notatników Rmd ORAZ następnie wygenerowanych (knitterem) z nich plików html (wraz z zapisanym wyjściem komend) do katalogu tests w repozytorium. Format nazewnictwa powinien być zgodny ze strukturą:
+
+[Identyfikator].[WersjaBiblioteki].[RRRR-MM-DD].[RozszerzeniePliku]
+
+(wersja biblioteki sprawdzana jest w pliku DESCRIPTION w katalogu głównym)
+
+[ctrl Shift F10] - restart środowiska
+
+0. Informacje o środowisku.
+```{r}
+sessionInfo()
+```
+
+
+1. Załadowanie devtools
+
+```{r}
+library(devtools)
+```
+2. Instalacja najnowszej wersji Current Sectors
+
+```{r}
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+```
+3. Załadowanie biblioteki
+
+```{r}
+library(CurrentSectors)
+```
+
+4. Sprawdzenie, czy informacja o f-cji jest w helpie biblioteki
+
+```{r}
+?CurrentSectors
+```
+
+
+5. Sprawdzenie helpa funkcji updateData()
+
+```{r}
+?updateData
+```
+
+6. Zapisanie zbiorów danych do katalogu bieżącego funkcją saveData
+
+```{r}
+path <- "./"
+saveData(path)
+```
+
+7. Skrócenie plików danych, aby update trwał krócej (200 pierwszych spółek oraz zawężenie zakresu czasowego o 5 ostatnich obserwacji)
+
+```{r}
+# Załadowanie plików
+load(file = "company_database.rda")
+load(file = "company_timeseries.rda")
+load(file = "forex_timeseries.rda")
+# Skrócenie do 200 spółek (są w tej samej kolejności w obydwu plikach)
+company_database <- company_database[1:200,]
+company_timeseries <- company_timeseries[, 1:200]
+# Skrócenie szeregów czasowych
+company_timeseries <- company_timeseries[1:(nrow(company_timeseries)-5)]
+forex_timeseries <- forex_timeseries[1:(nrow(forex_timeseries)-5)]
+# Zapis zmodyfikowanych plików
+save(company_database, file = "company_database.rda")
+save(company_timeseries, file = "company_timeseries.rda")
+save(forex_timeseries, file = "forex_timeseries.rda")
+# Usunięcie obiektów ze środowiska
+rm(company_database, company_timeseries, forex_timeseries)
+```
+
+8. Sprawdzenie stanu danych w plikach
+```{r}
+load("~/R/school/UG3/io/CSchecks/company_database.rda")
+load("~/R/school/UG3/io/CSchecks/company_timeseries.rda")
+load("~/R/school/UG3/io/CSchecks/forex_timeseries.rda")
+```
+
+Dane mają po 200 spółek. Dla testu wykonanego jeszcze w grudniu szeregi czasowe kończą się w czerwcu
+
+```{r}
+# Usunięcie z powrotem.
+rm(company_database, company_timeseries, forex_timeseries)
+```
+
+9. Próby wywołania f-cji z niepoprawnymi parametrami ścieżki dyskowej.
+Oczekiwany prompt "User data update unsuccesful."
+
+```{r}
+updateData(NA)
+```
+
+```{r}
+updateData(NULL)
+```
+
+
+```{r}
+updateData("\/\/")
+```
+Błąd nieobsłużony, ale to niezbyt istotne.
+
+
+```{r}
+updateData("dfjhas98h3425")
+```
+Wywołanie z niepoprawnymi parametrami zakończone powodzeniem.
+
+
+
+10. Wywołanie funkcji z poprawnym parametrem. W katalogu bieżącym znajdują się zapisane, skrócone pliki.
+Ścieżka dyskowa zapisana jest w zmiennej `path`.
+Oczekiwany rezultat: prompty informacyjne oraz efekt aktualizacji w zapisanych plikach.
+
+```{r}
+updateData(path)
+```
+
+Updating time series. This will take a while.
+Progress: the bottom dotted line elongates when every 10% of the data is downloaded
+..........
+..........Updating FX rates.
+Updating company database.
+
+Data has been succesfully updated.
+
+
+
+Całość trwała około 30 sekund, stąd dla 2000 spółek powinno trwać około 5-10 minut.
+
+
+```{r}
+load("~/R/school/UG3/io/CSchecks/company_database.rda")
+View(company_database)
+load("~/R/school/UG3/io/CSchecks/company_timeseries.rda")
+View(company_timeseries)
+load("~/R/school/UG3/io/CSchecks/forex_timeseries.rda")
+View(forex_timeseries)
+
+```
+
+Kapitalizacje zostały zaktualizowane, odpowiednie wersje EUR i USD uległy przeliczeniu.
+Szeregi czasowe uległy wydłużeniu do listopada włącznie (grudnia jeszcze nie aktualizujemy).
+Test zakończony powodzeniem.
+
+11. Wywołanie funkcji z poprawnym parametrem, ale gdy pliki są aktualne.
+Oczekiwany rezultat - brak aktualizacji oraz informatywny prompt.
+
+```{r}
+updateData(path)
+```
+Data can't be updated yet
+
+
+12. Odłączenie biblioteki
+
+```{r}
+detach(package:CurrentSectors)
+```
+
+13. Odinstalowanie biblioteki
+
+```{r}
+remove.packages("CurrentSectors")
+```
+
+
