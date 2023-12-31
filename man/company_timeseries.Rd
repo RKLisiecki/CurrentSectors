@@ -3,7 +3,7 @@
 \docType{data}
 \name{company_timeseries}
 \alias{company_timeseries}
-\title{Historical stock prices - monthly closes of 2026 stocks (from Yahoo Finance)}
+\title{Historical stock prices - monthly closes of 2025 stocks (from Yahoo Finance)}
 \format{
 An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2026 columns:
 \describe{
@@ -21,7 +21,7 @@ An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2026 columns:
 company_timeseries
 }
 \description{
-A subset of Yahoo Finance timeseries history for 2026 stock
+A subset of Yahoo Finance timeseries history for 2025 stock
 monthly close prices adjusted for splits and not for dividends.
 Covering the timespan from January 2018 to December 2023.
 Column names of this dataset correspond to Yahoo Finance tickers

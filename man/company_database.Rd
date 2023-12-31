@@ -3,9 +3,9 @@
 \docType{data}
 \name{company_database}
 \alias{company_database}
-\title{Company overviews of 2028 European and American stocks (from Yahoo Finance)}
+\title{Company overviews of 2025 European and American stocks (from Yahoo Finance)}
 \format{
-A data frame with 2026 rows and 13 columns:
+A data frame with 2025 rows and 13 columns:
 \describe{
   \item{Name}{Company name on one of the Euronext exchanges or Polish brokerage houses}
   \item{Ticker}{Company stock ticker used to collect data from Yahoo Finance}

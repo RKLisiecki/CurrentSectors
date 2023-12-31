@@ -1,4 +1,4 @@
-#' Company overviews of 2028 European and American stocks (from Yahoo Finance)
+#' Company overviews of 2025 European and American stocks (from Yahoo Finance)
 #'
 #' A subset of Yahoo Finance profile and statistics data of 1161 US and
 #' 943 European companies (BE, DE, ES, FR, IT, NL, PT)
@@ -6,7 +6,7 @@
 #' plus their USD and EUR market cap values after conversion
 #' at rate dated at last observation.
 #'
-#' @format A data frame with 2026 rows and 13 columns:
+#' @format A data frame with 2025 rows and 13 columns:
 #' \describe{
 #'   \item{Name}{Company name on one of the Euronext exchanges or Polish brokerage houses}
 #'   \item{Ticker}{Company stock ticker used to collect data from Yahoo Finance}
@@ -25,9 +25,9 @@
 #' @source <https://finance.yahoo.com/quote/>
 "company_database"
 
-#' Historical stock prices - monthly closes of 2026 stocks (from Yahoo Finance)
+#' Historical stock prices - monthly closes of 2025 stocks (from Yahoo Finance)
 #'
-#' A subset of Yahoo Finance timeseries history for 2026 stock
+#' A subset of Yahoo Finance timeseries history for 2025 stock
 #' monthly close prices adjusted for splits and not for dividends.
 #' Covering the timespan from January 2018 to December 2023.
 #' Column names of this dataset correspond to Yahoo Finance tickers
