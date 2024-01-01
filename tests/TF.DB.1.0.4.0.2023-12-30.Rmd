@@ -20,7 +20,7 @@ sessionInfo()
 ##Test: TF.DB.1
 
 ```{r}
-saveData("C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/")
+saveData("C:/~/Studia/!semestr3/Inżynieria oprogramowania/")
 ```
 
 ```{r}
