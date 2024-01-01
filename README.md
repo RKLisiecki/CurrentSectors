@@ -175,6 +175,8 @@ Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano inspiruj
 
 ## 4. Testy
 
+Pełne szczegóły scenariuszy testowych dostępne są w katalogu `/tests`, którego pliki `.Rmd` umożliwiają przeprowadzanie tzw. testów regresji.
+
 Tester jest odpowiedzialny za poprawną konfigurację swojego środowiska testowego (uruchomieniowego) tak, aby biblioteka kompilowała się w nim oraz by był możliwy eksport plików `Rmd` do `html` za pośrednictwem `knittera`. Testy nieudane z powodu uchybień testera w konfiguracji własnego środowiska **nie mogą być wgrywane do repozytorium** ani dokumentowane w tabeli.
 
 Każdy test musi być wykonywany w środowisku uruchomieniowym spełniającym odpowiednie kryteria, wprost z IDE RStudio, 
