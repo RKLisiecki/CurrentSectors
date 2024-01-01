@@ -101,8 +101,8 @@ Opis wymagań jest adekwatny dla użytkowników, którzy zainstalowali oraz zał
 
 | Id | Nazwa | Opis | Priorytet | Typ |
 | --- | --- | --- | :---: | :---: |
-| F.SS.1 | Tworzenie tabeli struktury sektorowej - funkcja `sStructure(country, path)` | Funkcja z obligatoryjnym parametrem nazwy państwa (`country`) oraz opcjonalnym parametrem `path` zwraca w formacie tabeli aktualny zbiór wartości łącznych kapitalizacji (`Market cap total`) w Euro oraz udziałów w kapitalizacji łącznej w państwie (`Total market cap share`) wszystkich spółek skategoryzowanych w tych sektorach i branżach. Funkcja przelicza odpowiednie wartości do Euro, jeżeli to konieczne. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `path` ich  wersje zapisane na dysku użytkownika (F.DB.1) | 1 | F |
-| F.SS.2 | Tworzenie wykresu struktury sektorowej - funkcja `sStructureChart(country, path)` | Funkcja z opcjonalnymi parametrami nazwy państwa (`country`) oraz `path` zwraca wykres powierzchniowy udziałów poszczególnych sektorów w kapitalizacji łącznej spółek. Funkcja wykorzystuje przeliczenie odpowiednich wartości do Euro, gdy to konieczne. Domyślnie struktura prezentowana jest dla całego zbioru spółek a uzupełnienie parametru nazwy państwa zawęża rezultat geograficznie. Wykres zawiera informatywny tytuł. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `path` ich wersje zapisane na dysku użytkownika (F.DB.1) | 1 | F |
+| F.SS.1 | Tworzenie tabeli struktury sektorowej - funkcja `sStructure(country, path)` | Funkcja z obligatoryjnym parametrem nazwy państwa (`country`) oraz opcjonalnym parametrem `path` zwraca w formie jednowierszowej tabeli z nagłówkiem (`data.frame`) aktualne udziały łączne spółek poszczególnych sektorów w kapitalizacji łącznej spółek w państwie, w procentach. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `path` ich wersje zapisane na dysku użytkownika (F.DB.1) | 1 | F |
+| F.SS.2 | Tworzenie wykresu struktury sektorowej - funkcja `sStructureChart(country, path)` | Funkcja z obligatoryjnym parametrem nazwy państwa (`country`) oraz opcjonalnym `path` zwraca wykres powierzchniowy (pie-chart) udziałów poszczególnych sektorów w kapitalizacji łącznej spółek w państwie. Wykres zawiera informatywny tytuł. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru `path` ich wersje zapisane na dysku użytkownika (F.DB.1) | 1 | F |
 
 
 #### **Grupa nr 4 (sector time series):** analiza szeregów czasowych sektorów
@@ -148,7 +148,6 @@ Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano inspiruj
 | interpreter R  | interpreter | środowisko języka R |  w wersji 4.2.x lub wyższej |
 | rtools | toolchain / pakiet kompilatorów i narzędzi | pakiety do budowania bibliotek R wprost za źródła | w wersji adekwatnej do posiadanej wersji R (np. 4.2 dla R 4.2.x) |
 | devtools / remotes | pakiet / biblioteka R | pakiety do kompilacji bibliotek spoza CRAN |  alternatywne pakiety służące instalacji biblioteki, devtools: 2.4.5 wzwyż, remotes: 2.4.2 wzwyż |
-| ?(ggplot2) | pakiety/biblioteki R | pakiet służący tworzeniu wykresów zgodnie z regułami Grammar of Graphics | w wersji (x.y.z) | 
 | quantmod | pakiet / biblioteka R | pakiet zawierający klasy i funkcje służące modelowaniu finansowemu oraz komunikacji z Yahoo Finance API |  w wersji 0.4.24 lub wyższej, **nie wymaga samodzielnej instalacji przez użytkownika** - jest instalowany automatycznie przez bibliotekę CurrentSectors | 
 | xts | pakiet / biblioteka R | pakiet zawierający klasy i funkcje do przetwarzania szeregów czasowych |  w wersji 0.13.1 lub wyższej, **nie wymaga samodzielnej instalacji przez użytkownika** - jest instalowany automatycznie przez bibliotekę CurrentSectors |
 | zależności implicite | pakiety/biblioteki R | pakiety będące zagnieżdżonymi zależnościami xts i quantmod i innych bibliotek  | szereg **automatycznie** instalowanych pakietów w odpowiednich wersjach, m.in. zoo | 
@@ -166,7 +165,6 @@ Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano inspiruj
 | klient Git | oprogramowanie | program obsługujący system kotroli wersji oraz operacje na lokalnym i zdalnym repozytorium | możliwy do wykorzystania jest klient git wbudowany w RStudio bądź dedykowana aplikacja, sugeruje się klient Github Desktop |
 | rtools | toolchain / pakiet kompilatorów i narzędzi | pakiety do budowania bibliotek R wprost za źródła | w wersji adekwatnej do posiadanej wersji R (np. 4.2 dla R 4.2.x) |
 | devtools | pakiet / biblioteka R | pakiet służący zarządzaniu kompilacją, instalacją oraz automatyzacji czynności przy budowaniu biblioteki | wersja 2.4.5 lub wyższa  |
-| ?(ggplot2) | pakiety/biblioteki R | pakiet służący tworzeniu wykresów zgodnie z regułami Grammar of Graphics | w wersji (x.y.z) | 
 | knitr | pakiety/biblioteki R | pakiet służący generowaniu plików html z notatników R Markdown | w wersji 1.4.5 lub wyższej | 
 | quantmod | pakiet / biblioteka R | pakiet zawierający klasy i funkcje służące modelowaniu finansowemu oraz komunikacji z Yahoo Finance API |   w wersji 0.4.24 lub wyższej |
 | roxygen2 | pakiet / biblioteka R | pakiet służący automatycznemu generowaniu plików pomocy z kodu wzbogaconego odpowiednimi dekoratorami |  wersja 7.2.3 lub wyższa |
