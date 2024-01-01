@@ -146,11 +146,12 @@ Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano inspiruj
 | działające łącze internetowe | infrastruktura | działające połączenie SSH oraz protokół HTTP |  istotne tylko przy pierwszej instalacji oraz aktualizacjach danych |
 | Windows / Linux / MacOS  | system operacyjny | alternatywy umożliwiające działanie języka R | Windows 10 + / Linux kernel 2.4.6+ / MacOS Catalina +, bardzo prawdopodobne działanie również na starszych wersjach systemów, sytemach Windows Server oraz OpenBSD |
 | interpreter R  | interpreter | środowisko języka R |  w wersji 4.2.x lub wyższej |
-| devtools / remotes | pakiet / biblioteka R | pakiety do kompilacji bibliotek spoza CRAN |  alternatywne pakiety służące instalacji biblioteki |
-| (ggplot2) | pakiety/biblioteki R | pakiet służący tworzeniu wykresów zgodnie z regułami Grammar of Graphics | w wersji (x.y.z) | 
+| rtools | toolchain / pakiet kompilatorów i narzędzi | pakiety do budowania bibliotek R wprost za źródła | w wersji adekwatnej do posiadanej wersji R (np. 4.2 dla R 4.2.x) |
+| devtools / remotes | pakiet / biblioteka R | pakiety do kompilacji bibliotek spoza CRAN |  alternatywne pakiety służące instalacji biblioteki, devtools: 2.4.5 wzwyż, remotes: 2.4.2 wzwyż |
+| ?(ggplot2) | pakiety/biblioteki R | pakiet służący tworzeniu wykresów zgodnie z regułami Grammar of Graphics | w wersji (x.y.z) | 
 | quantmod | pakiet / biblioteka R | pakiet zawierający klasy i funkcje służące modelowaniu finansowemu oraz komunikacji z Yahoo Finance API |  w wersji 0.4.24 lub wyższej, **nie wymaga samodzielnej instalacji przez użytkownika** - jest instalowany automatycznie przez bibliotekę CurrentSectors | 
 | xts | pakiet / biblioteka R | pakiet zawierający klasy i funkcje do przetwarzania szeregów czasowych |  w wersji 0.13.1 lub wyższej, **nie wymaga samodzielnej instalacji przez użytkownika** - jest instalowany automatycznie przez bibliotekę CurrentSectors |
-| zależności implicite | pakiety/biblioteki R | pakiety będące zagnieżdżonymi zależnościami xts, quantmod (i ggplot2) | **szereg automatycznie instalowanych pakietów**, m.in. zoo | 
+| zależności implicite | pakiety/biblioteki R | pakiety będące zagnieżdżonymi zależnościami xts i quantmod i innych bibliotek  | szereg **automatycznie** instalowanych pakietów w odpowiednich wersjach, m.in. zoo | 
 
 
 
@@ -163,14 +164,15 @@ Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano inspiruj
 | interpreter R w wersji 4.2.x lub wyższej | interpreter | środowisko języka R |  w wersji 4.2.x lub wyższej |
 | środowisko R Studio | zintegrowane środowisko wytwórcze | środowisko wspierające procesy kodowania, testowania, budowania oraz wersjonowania biblioteki | w wersji 2023.03.0 lub wyższej |
 | klient Git | oprogramowanie | program obsługujący system kotroli wersji oraz operacje na lokalnym i zdalnym repozytorium | możliwy do wykorzystania jest klient git wbudowany w RStudio bądź dedykowana aplikacja, sugeruje się klient Github Desktop |
-| devtools | pakiet / biblioteka R | pakiet służący kompilacji, instalacji oraz automatyzacji czynności przy budowaniu biblioteki | wersja 2.4.5 lub wyższa  |
-| (ggplot2) | pakiety/biblioteki R | pakiet służący tworzeniu wykresów zgodnie z regułami Grammar of Graphics | w wersji (x.y.z) | 
+| rtools | toolchain / pakiet kompilatorów i narzędzi | pakiety do budowania bibliotek R wprost za źródła | w wersji adekwatnej do posiadanej wersji R (np. 4.2 dla R 4.2.x) |
+| devtools | pakiet / biblioteka R | pakiet służący zarządzaniu kompilacją, instalacją oraz automatyzacji czynności przy budowaniu biblioteki | wersja 2.4.5 lub wyższa  |
+| ?(ggplot2) | pakiety/biblioteki R | pakiet służący tworzeniu wykresów zgodnie z regułami Grammar of Graphics | w wersji (x.y.z) | 
 | knitr | pakiety/biblioteki R | pakiet służący generowaniu plików html z notatników R Markdown | w wersji 1.4.5 lub wyższej | 
 | quantmod | pakiet / biblioteka R | pakiet zawierający klasy i funkcje służące modelowaniu finansowemu oraz komunikacji z Yahoo Finance API |   w wersji 0.4.24 lub wyższej |
 | roxygen2 | pakiet / biblioteka R | pakiet służący automatycznemu generowaniu plików pomocy z kodu wzbogaconego odpowiednimi dekoratorami |  wersja 7.2.3 lub wyższa |
 | rvest | pakiet / biblioteka R | pakiet służący do web-scrapingu i parsowania ściągniętych stron internetowych |  wersja 1.0.3 lub wyższa |
 | xts | pakiet / biblioteka R | pakiet zawierający klasy i funkcje do przetwarzania szeregów czasowych | w wersji 0.13.1 lub wyższej |
-| zależności implicite | pakiety/biblioteki R | pakiety będące zagnieżdżonymi zależnościami | **szereg automatycznie instalowanych pakietów**, m.in. zoo | 
+| zależności implicite | pakiety/biblioteki R | pakiety będące zagnieżdżonymi zależnościami | szereg **automatycznie** instalowanych pakietów, m.in. zoo | 
 
 
 ## 4. Testy
