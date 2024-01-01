@@ -57,7 +57,14 @@ sIndices <- function (country=NULL, path=NULL) {
       if(!is.null(country) && (country %in% company_data$Country)) {
         company_data <- company_data[company_data$Country==country,]
         company_ts <- company_ts[, names(company_ts) %in% company_data$Ticker]
+      } else {
+        if(!is.null(country)) {
+          company_data <- NULL
+          company_ts <- NULL
+          forex_ts <- NULL
+        }
       }
+
       # uzupełnienie pustych notowań WSTECZ - nocb a potem wprzód
       company_ts <- na.locf(company_ts, fromLast = TRUE)
       company_ts <- na.locf(company_ts, fromLast = FALSE)

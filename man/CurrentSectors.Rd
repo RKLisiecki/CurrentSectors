@@ -29,7 +29,7 @@ updateData()
 sIndices()
  - calculates aggregate sector market capitalization time series
 
-sIndicesChart
+sIndicesChart()
  - plots aggregate sector market capitalization time series
 
 sIndicesTRCompChart()
