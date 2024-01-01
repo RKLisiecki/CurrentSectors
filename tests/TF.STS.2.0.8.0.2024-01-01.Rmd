@@ -1,0 +1,138 @@
+---
+title: "Testy funkcji sIndicesChart()"
+author: "R. Karol Lisiecki"
+date: "2024-01-01"
+output: html_document
+---
+Każdy test musi zostać poprzedzony restartem środowiska R, instalacją CurrentSectors z repozytorium zdalnego oraz załadowaniem biblioteki. Test musi rozpoczynać się wywołaniami funkcji sessionInfo(). Wszystkie wykonywane testy (z wyjątkiem tych "wyklikanych") powinny zostać zapisane w formie notatników Rmd ORAZ następnie wygenerowanych (knitterem) z nich plików html (wraz z zapisanym wyjściem komend) do katalogu tests w repozytorium. Format nazewnictwa powinien być zgodny ze strukturą:
+
+[Identyfikator].[WersjaBiblioteki].[RRRR-MM-DD].[RozszerzeniePliku]
+
+(wersja biblioteki sprawdzana jest w pliku DESCRIPTION w katalogu głównym)
+
+[ctrl Shift F10] - restart środowiska
+
+0. Informacje o środowisku.
+```{r}
+sessionInfo()
+```
+
+
+1. Załadowanie devtools
+
+```{r}
+library(devtools)
+```
+2. Instalacja najnowszej wersji Current Sectors
+
+```{r}
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+```
+3. Załadowanie biblioteki
+
+```{r}
+library(CurrentSectors)
+```
+
+4. Sprawdzenie, czy informacja o f-cji jest w helpie biblioteki
+
+```{r}
+?CurrentSectors
+```
+
+
+5. Sprawdzenie helpa funkcji sIndicesChart()
+
+```{r}
+?sIndicesChart
+```
+
+6. Wywoływanie funkcji z niepoprawnymi parametrami
+
+Oczekiwane linijki w monicie, m.in.: 
+
+Calculation of sector capitalizations was unsuccesful
+Plot creation was unsuccesful
+
+```{r}
+sIndicesChart(country = NA, path = "!~~ads!")
+```
+
+
+```{r}
+sIndicesChart(country = "Bezludna wyspa")
+```
+
+Testy i inspekcja zakończone powodzeniem.
+
+7. Poprawne wywołania funkcji dla danych wbudowanych i inspekcja wykresów:
+- czy legenda jest możliwa do odczytania,
+- czy liniee nie wychodzą poza obszar wykresu,
+- czy tytuł jest zgodny z zapytaniem
+
+
+```{r}
+# Wszystkie kraje zbiorczo
+sIndicesChart()
+```
+
+```{r}
+sIndicesChart("Italy")
+```
+
+```{r}
+sIndicesChart("Spain")
+```
+
+```{r}
+sIndicesChart("Portugal")
+```
+
+```{r}
+sIndicesChart("Netherlands")
+```
+
+```{r}
+sIndicesChart("Belgium")
+```
+
+```{r}
+sIndicesChart("Germany")
+```
+
+```{r}
+sIndicesChart("France")
+```
+
+```{r}
+sIndicesChart("USA")
+```
+
+Testy i inspekcja zakończone powodzeniem.
+
+8. Sprawdzenie wywołań dla danych zapisanych na dysku, w katalogu bieżącym
+```{r}
+path <- "./"
+saveData(path)
+```
+
+```{r}
+sIndicesChart("USA", path)
+```
+
+Testy i inspekcja zakończone powodzeniem.
+
+
+12. Odłączenie biblioteki
+
+```{r}
+detach(package:CurrentSectors)
+```
+
+13. Odinstalowanie biblioteki
+
+```{r}
+remove.packages("CurrentSectors")
+```
+
+
