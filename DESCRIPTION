@@ -15,7 +15,7 @@ Imports:
     quantmod (>= 0.4.25),
     xts (>= 0.13.1)
 Depends: 
-    R (>= 4.20),
+    R (>= 4.2),
     quantmod (>= 0.4.25),
     xts (>= 0.13.1)
 RoxygenNote: 7.2.3
