@@ -1,7 +1,7 @@
 Package: CurrentSectors
 Type: Package
 Title: Stock Quotes Analysis Across Sectors and Regions
-Version: 0.6.0
+Version: 0.8.0
 Author: Ryszard Karol Lisiecki
 Maintainer: Ryszard Karol Lisiecki <m2mobile5487-cisco@yahoo.com>
 Description: Empowers drilling down stock quotes across sectors, industries and countries,
@@ -15,7 +15,7 @@ Imports:
     quantmod (>= 0.4.25),
     xts (>= 0.13.1)
 Depends: 
-    R (>= 2.10),
+    R (>= 4.20),
     quantmod (>= 0.4.25),
     xts (>= 0.13.1)
 RoxygenNote: 7.2.3

@@ -29,6 +29,12 @@ updateData()
 sIndices()
  - calculates aggregate sector market capitalization time series
 
+sIndicesChart
+ - plots aggregate sector market capitalization time series
+
+sIndicesTRCompChart()
+ - plots sector total returns comparison time series for two sectors
+
 \emph{Included datasets}
 
 company_database

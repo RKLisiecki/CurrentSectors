@@ -3,11 +3,15 @@
 #' sIndices() calculates aggregate market capitalizations
 #' for all sectors in a given cross-section
 #' for all months from company_timeseries start point to endpoint
-#' in billions of EUR
+#' in billions of EUR.
+#'
+#' The optional `path` parameter can point to the directory with saved versions
+#' of the library datasets (with the saveData() function) to use them instead of
+#' the built-in datasets.
 #'
 #'
 #' @param country A character vector
-#' @param path A character vector
+#' @param path=NULL A character vector
 #'
 #' @returns an xts object with monthly periodicity and Sectors in alphabetical order as columns of core data
 #'
