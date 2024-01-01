@@ -6,7 +6,7 @@
 #' is treated as the base value (=100).
 #' Return values are calculated in country's base currency
 #' (are not all recalculated to Euros).
-#'
+#' Function uses uses the in-built datasets or data saved by the user.
 #' The optional `path` parameter can point to the directory with saved versions
 #' of the library datasets (with the saveData() function) to use them instead of
 #' the built-in datasets.

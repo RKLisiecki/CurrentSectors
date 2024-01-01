@@ -26,6 +26,12 @@ saveData()
 updateData()
  - updates the library's datasets, which were saved in user's directory on disk
 
+sStructure
+ - calculate shares of each sector's market cap. in total market cap.
+
+sStructureChart
+ - plots a pie-chart of sector market cap shares for companies in a given country
+
 sIndices()
  - calculates aggregate sector market capitalization time series
 
