@@ -1,0 +1,70 @@
+---
+title: "TF.STS.2.0.9.0.2023-01-02"
+author: "Michał_Bartkiewicz"
+date: "2024-01-02"
+output: html_document
+---
+
+```{r}
+#Wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+#Załadowanie pakietu devtools
+library(devtools)
+#Instalacja najnowszej wersji biblioteki CurrentSectors
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+#Załadowanie biblioteki 
+library(CurrentSectors)
+#Ponowne wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+```
+
+#Wymagania funkcjonalne 
+
+##Funkcja z opcjonalnymi parametrami nazwy państwa (country) oraz path zwraca w formie wykresu zbiorczego szeregów czasowych (po jeden szereg na sektor) wartości kapitalizacji łącznej w miliardach Euro wszystkich spółek dla każdego z sektorów w poszczególnych miesiącach. W przypadku braków notowań uzupełnia je w tył, potem wprzód. Wartości przeliczone są do miliardów Euro na podstawie wartości końcowej kapitalizacji, notowań poszczególnych spółek w zbiorze danych oraz notowań FX. Domyślnie prezentowane są wyliczenia dla całego zbioru spółek a uzupełnienie parametru wybranego państwa zawęża reultat geograficznie. Wykres zawiera informatywny tytuł oraz legendę. Domyślnie funkcja wykorzystuje dane dołączone a w przypadku ustaleniu wartości parametru path ich wersje zapisane na dysku użytkownika (F.DB.1)
+
+###Test: TF.STS.2
+
+```{r}
+?sIndicesChart
+```
+
+```{r}
+#Wywołanie funkcji z niepoprawnymi parametrami. Oczekiwany wynik: "Calculation of sector capitalizations was unsuccesful" i "Plot creation was unsuccesful"
+sIndicesChart("San Escobar")
+sIndicesChart("San Escobar","adada")
+```
+
+```{r}
+#Wywołanie funkcji z poprawnymi parametrami "country". oczekiwany wunik: wykres szeregów czasowych wartości kapitalizacji łącznej w miliardach Euro wszystkich spółek dla każdego z sektorów w poszczególnych miesiącach.
+sIndicesChart("France")
+sIndicesChart("USA")
+sIndicesChart("Italy")
+sIndicesChart("Belgium")
+sIndicesChart("Portugal")
+sIndicesChart("Germany")
+sIndicesChart("Spain")
+sIndicesChart("Netherlands")
+```
+
+```{r}
+saveData("C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+#Wywołanie funkcji z poprawnymi parametrami "country" i path.
+sIndicesChart("France","C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+sIndicesChart("USA","C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+sIndicesChart("Italy","C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+sIndicesChart("Belgium","C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+sIndicesChart("Portugal","C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+sIndicesChart("Germany","C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+sIndicesChart("Spain","C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+sIndicesChart("Netherlands","C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+data("company_database")
+```
+
+```{r}
+rm(company_database)
+#Odłączenie biblioteki
+detach("package:CurrentSectors", unload = TRUE)
+#Odinstalowywanie biblioteki
+remove.packages("CurrentSectors")
+```
+

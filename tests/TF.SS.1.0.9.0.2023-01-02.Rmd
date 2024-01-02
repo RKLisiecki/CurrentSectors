@@ -1,0 +1,70 @@
+---
+title: "TF.SS.1.0.9.0.2023-01-02"
+author: "Michał_Bartkiewicz"
+date: "2024-01-02"
+output: html_document
+---
+
+```{r}
+#Wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+#Załadowanie pakietu devtools
+library(devtools)
+#Instalacja najnowszej wersji biblioteki CurrentSectors
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+#Załadowanie biblioteki 
+library(CurrentSectors)
+#Ponowne wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+```
+
+#Wymagania funkcjonalne 
+
+##Funkcja z obligatoryjnym parametrem nazwy państwa (country) oraz opcjonalnym parametrem path zwraca w formie jednokolumnowej tabeli z nagłówkiem (data.frame) aktualne udziały łączne spółek poszczególnych sektorów w kapitalizacji łącznej spółek w państwie, w procentach. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru path ich wersje zapisane na dysku użytkownika (F.DB.1). Wydruk tabeli poprzedzony jest wydrukiem z informacją o kapitalizacji łącznej (w mld EUR) spółek z tego państwa w zbiorze danych.
+
+###Test: TF.SS.1
+
+```{r}
+?sStructure
+```
+
+```{r}
+# Wywołanie funkcji z nieprawidowy parametrem "country". Oczekiwany rezultat: "Calculation was unsuccesful NULL".
+sStructure("San Escobar")
+```
+
+```{r}
+# Wywołanie funkcji z nieprawidowy parametrem "path". Oczekiwany rezultat: "Calculation was unsuccesful NULL".
+sStructure("USA","dasdafsdgsdg")
+```
+
+```{r}
+data(company_database)
+unique_countries <- unique(company_database$Country)
+print(unique_countries)
+rm(unique_countries)
+rm(company_database)
+```
+```{r}
+# Wywołanie funkcji z prawidłowym parametrem "country" dla każdego z krajów dostępnych w bibliotece. Oczekiwany rezultat to jednokolumnowa tabelka z nagłówkiem (data.frame), prezentujący aktualne udziały łączne spółek poszczególnych sektorów w kapitalizacji łącznej spółek w państwie, w procentach.
+sStructure("France")
+sStructure("USA")
+sStructure("Italy")
+sStructure("Belgium")
+sStructure("Portugal")
+sStructure("Germany")
+sStructure("Spain")
+sStructure("Netherlands")
+```
+
+```{r}
+#Wywołanie funkcji na danych zapisanych. 
+sStructure("France","C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+```
+
+```{r}
+#Odłączenie biblioteki
+detach("package:CurrentSectors", unload = TRUE)
+#Odinstalowywanie biblioteki
+remove.packages("CurrentSectors")
+```
