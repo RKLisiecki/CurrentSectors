@@ -1,0 +1,29 @@
+---
+title: "TF.DB.1.0.4.0.2023-12-30"
+author: "Michał_Bartkiewicz"
+date: "2023-12-30"
+output: html_document
+---
+
+```{r}
+sessionInfo()
+
+library(devtools)
+
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+
+library(CurrentSectors)
+
+sessionInfo()
+```
+
+##Test: TF.DB.1
+
+```{r}
+saveData("C:/~/Studia/!semestr3/Inżynieria oprogramowania/")
+```
+
+```{r}
+detach("package:CurrentSectors", unload = TRUE)
+remove.packages("CurrentSectors")
+```
