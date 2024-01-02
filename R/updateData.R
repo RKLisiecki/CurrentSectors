@@ -39,11 +39,10 @@ updateData <- function(path) {
       last_date <- index(company_timeseries)[nrow(company_timeseries)]
       last_month <- format(last_date, "%m")
       today <- Sys.Date()
-      todmonth <- format(today, "%m")
-      # update dokonywany jest tylko w przypadku rozp. kolejnego mies.
-      month_diff <- as.numeric(todmonth) - as.numeric(last_month)
-      if(month_diff<2) {
-        info <- "Data can't be updated yet"
+      day_diff <- as.numeric(today - last_date)
+      # update dokonywany jest tylko w po 31 dnich od ost. daty aktualizacji
+      if(day_diff<31) {
+        info <- paste("Data can't be updated yet, wait ", (31-day_diff), " more days", sep = "")
       } else {
         symbols <- colnames(company_timeseries)
         dates <- seq(from = last_date, to = today, by = "days")
