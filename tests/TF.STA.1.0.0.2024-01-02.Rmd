@@ -1,0 +1,116 @@
+---
+title: "Testy funkcji TAReport()"
+author: "R. Karol Lisiecki"
+date: "2024-01-03"
+output: html_document
+---
+Każdy test musi zostać poprzedzony restartem środowiska R, instalacją CurrentSectors z repozytorium zdalnego oraz załadowaniem biblioteki. Test musi rozpoczynać się wywołaniami funkcji sessionInfo(). Wszystkie wykonywane testy (z wyjątkiem tych "wyklikanych") powinny zostać zapisane w formie notatników Rmd ORAZ następnie wygenerowanych (knitterem) z nich plików html (wraz z zapisanym wyjściem komend) do katalogu tests w repozytorium. Format nazewnictwa powinien być zgodny ze strukturą:
+
+[Identyfikator].[WersjaBiblioteki].[RRRR-MM-DD].[RozszerzeniePliku]
+
+(wersja biblioteki sprawdzana jest w pliku DESCRIPTION w katalogu głównym)
+
+[ctrl Shift F10] - restart środowiska
+
+0. Informacje o środowisku.
+```{r}
+sessionInfo()
+```
+
+
+1. Załadowanie devtools
+
+```{r}
+library(devtools)
+```
+2. Instalacja najnowszej wersji Current Sectors
+
+```{r}
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+```
+3. Załadowanie biblioteki
+
+```{r}
+library(CurrentSectors)
+```
+
+4. Sprawdzenie, czy informacja o f-cji jest w helpie biblioteki
+
+```{r}
+?CurrentSectors
+```
+
+
+5. Sprawdzenie helpa funkcji TAReport
+
+```{r}
+?TAReport
+```
+
+6. Wywoływanie funkcji z niepoprawnymi parametrami
+
+Oczekiwane linijki w monicie, m.in.: 
+
+Calculation was unsuccesful
+
+```{r}
+TAReport(country = NA, sector = "Real Estate", path = "!~~ads!")
+```
+
+
+```{r}
+TAReport(country = "America", sector = "Real Estate")
+```
+
+Testy i inspekcja zakończone powodzeniem.
+
+7. Poprawne wywołania funkcji dla danych wbudowanych.
+- czy dane są posortowane nazwami branży a potem spółki,
+- czy nie ma wartości pustych,
+- czy kolumna RSI ma wartość "overbought", "oversold" albo "no signal",
+- czy kolumna MA ma wartości "bullish" lub "bearish"
+- czy jest ten sam zbiór spółek, co po wywołaniu tabel zawężonych.
+
+
+```{r}
+TAReport(country = "USA", sector = "Technology")
+```
+
+```{r}
+TAReport(country = "Belgium", sector = "Energy")
+```
+
+```{r}
+listCompanies(country = "Spain", sector = "Healthcare")
+TAReport(country = "Spain", sector = "Healthcare")
+```
+
+
+
+Testy i inspekcja zakończone powodzeniem.
+
+8. Sprawdzenie wywołań dla danych zapisanych na dysku, w katalogu bieżącym
+```{r}
+path <- "./"
+# saveData(path)
+# mam już poprawnie zaktualizowane spółki na ten rok
+
+TAReport(country = "Netherlands", sector = "Communication Services")
+TAReport(country = "Netherlands", sector = "Communication Services", path)
+
+
+```
+Testy i inspekcja zakończone powodzeniem.
+
+
+12. Odłączenie biblioteki
+
+```{r}
+detach(package:CurrentSectors)
+```
+
+13. Odinstalowanie biblioteki
+
+```{r}
+remove.packages("CurrentSectors")
+```
