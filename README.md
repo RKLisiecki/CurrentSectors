@@ -150,7 +150,7 @@ Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano inspiruj
 | devtools / remotes | pakiet / biblioteka R | pakiety do kompilacji bibliotek spoza CRAN |  alternatywne pakiety służące instalacji biblioteki, devtools: 2.4.5 wzwyż, remotes: 2.4.2 wzwyż |
 | quantmod | pakiet / biblioteka R | pakiet zawierający klasy i funkcje służące modelowaniu finansowemu oraz komunikacji z Yahoo Finance API |  w wersji 0.4.24 lub wyższej, **nie wymaga samodzielnej instalacji przez użytkownika** - jest instalowany automatycznie przez bibliotekę CurrentSectors | 
 | xts | pakiet / biblioteka R | pakiet zawierający klasy i funkcje do przetwarzania szeregów czasowych |  w wersji 0.13.1 lub wyższej, **nie wymaga samodzielnej instalacji przez użytkownika** - jest instalowany automatycznie przez bibliotekę CurrentSectors |
-| zależności implicite | pakiety/biblioteki R | pakiety będące zagnieżdżonymi zależnościami xts i quantmod i innych bibliotek  | szereg **automatycznie** instalowanych pakietów w odpowiednich wersjach, m.in. zoo | 
+| zoo oraz TTR | pakiety/biblioteki R | zależności implicite - szereg **automatycznie** instalowanych pakietów w odpowiednich wersjach, zoo  - klasy i f-cje dot. obsługi szeregów czasowych (xts) oraz TTR - f-cje dot. wskaźników analizy technicznej (quantmod) | 
 
 
 
@@ -170,7 +170,7 @@ Klasyfikacji wymagań pozafunkcjonalnych dotyczących jakości dokonano inspiruj
 | roxygen2 | pakiet / biblioteka R | pakiet służący automatycznemu generowaniu plików pomocy z kodu wzbogaconego odpowiednimi dekoratorami |  wersja 7.2.3 lub wyższa |
 | rvest | pakiet / biblioteka R | pakiet służący do web-scrapingu i parsowania ściągniętych stron internetowych |  wersja 1.0.3 lub wyższa |
 | xts | pakiet / biblioteka R | pakiet zawierający klasy i funkcje do przetwarzania szeregów czasowych | w wersji 0.13.1 lub wyższej |
-| zależności implicite | pakiety/biblioteki R | pakiety będące zagnieżdżonymi zależnościami | szereg **automatycznie** instalowanych pakietów, m.in. zoo | 
+| zoo oraz TTR | pakiety/biblioteki R | zależności implicite - szereg **automatycznie** instalowanych pakietów w odpowiednich wersjach, zoo  - klasy i f-cje dot. obsługi szeregów czasowych (xts) oraz TTR - f-cje dot. wskaźników analizy technicznej (quantmod) | 
 
 
 ## 4. Testy
