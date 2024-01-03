@@ -1,0 +1,70 @@
+---
+title: "TF.STS.3.0.9.0.2023-01-02"
+author: "Michał_Bartkiewicz"
+date: "2024-01-02"
+output: html_document
+---
+
+```{r}
+#Wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+#Załadowanie pakietu devtools
+library(devtools)
+#Instalacja najnowszej wersji biblioteki CurrentSectors
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+#Załadowanie biblioteki 
+library(CurrentSectors)
+#Ponowne wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+```
+
+#Wymagania funkcjonalne 
+
+##Funkcja z obligatoryjnymi argumentami nazw dwóch państw (country1, country2), nazw dwóch sektorów (sector1, sector2) oraz opcjonalnym parametrem path zwraca w formie wykresu dwóch szeregów czasowych wartości indeksów jednopodstawowych kapitalizacji łącznej spółek w tych państwach oraz sektorach w poszczególnych miesiącach, dla których dostępne są notowania w bazie. Wartość w pierwszym okresie = 100. Bazą wycen są notowania w walutach macierzystych. Umożliwia również porównania w tym samym państwie lub tym samym sektorze. Wykres zawiera informatywny tytuł oraz legendę. Domyślnie funkcja wykorzystuje dane dołączone a w przypadku ustalenia wartości parametru path ich aktualizowane wersje zapisane na dysku użytkowanika (F.DB.1)
+
+###Test: TF.STS.3
+
+```{r}
+?sIndicesTRCompChart
+```
+
+```{r}
+#Wywołanie funkcji z niepoprawnymi parametrami. Oczekiwany wynik: "Calculation of sector capitalizations was unsuccesful" i "Plot creation was unsuccesful"
+sIndicesTRCompChart("San Escobar", "USA", "Technology", "Technology")
+sIndicesTRCompChart("France", "USA", "Tech", "Technology")
+```
+```{r}
+data(company_database)
+unique_Sectories <- unique(company_database$Sector)
+print(unique_Sectories)
+rm(unique_Sectories)
+rm(company_database)
+```
+```{r}
+#Wywołanie funkcji z poprawnymi parametrami "country". oczekiwany wunik: wykres dwóch szeregów czasowych wartości indeksów jednopodstawowych kapitalizacji łącznej spółek w tych państwach oraz sektorach w poszczególnych miesiącach, dla których dostępne są notowania w bazie.
+sIndicesTRCompChart("France", "Germany", "Financial Services", "Financial Services")
+sIndicesTRCompChart("France", "Germany", "Basic Materials", "Basic Materials")
+sIndicesTRCompChart("France", "Germany", "Real Estate", "Real Estate")
+sIndicesTRCompChart("France", "Germany", "Technology", "Technology")
+sIndicesTRCompChart("France", "Germany", "Healthcare", "Healthcare")
+sIndicesTRCompChart("France", "Germany", "Consumer Defensive", "Consumer Defensive")
+sIndicesTRCompChart("France", "Germany", "Consumer Cyclical", "Consumer Cyclical")
+sIndicesTRCompChart("France", "Germany", "Industrials", "Industrials")
+sIndicesTRCompChart("France", "Germany", "Energy", "Energy")
+sIndicesTRCompChart("France", "Germany", "Communication Services", "Communication Services")
+sIndicesTRCompChart("France", "Germany", "Utilities", "Utilities")
+```
+
+```{r}
+#Zapisywanie danych kolekcji do bieżącego folderu za pomocą funkcji saveData.
+saveData("C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+#Wywołanie funkcji z poprawnymi parametrami "country", "Sector" oraz path.
+sIndicesTRCompChart("USA", "Netherlands", "Healthcare", "Healthcare","C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+```
+
+```{r}
+#Odłączenie biblioteki
+detach("package:CurrentSectors", unload = TRUE)
+#Odinstalowywanie biblioteki
+remove.packages("CurrentSectors")
+```

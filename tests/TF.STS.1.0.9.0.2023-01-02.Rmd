@@ -1,0 +1,98 @@
+---
+title: "TF.STS.1.0.9.0.2023-01-02"
+author: "Michał_Bartkiewicz"
+date: "2024-01-02"
+output: html_document
+---
+
+```{r}
+#Wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+#Załadowanie pakietu devtools
+library(devtools)
+#Instalacja najnowszej wersji biblioteki CurrentSectors
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+#Załadowanie biblioteki 
+library(CurrentSectors)
+#Ponowne wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+```
+
+#Wymagania funkcjonalne 
+
+##Funkcja z opcjonalnymi parametrami nazwy państwa (country) oraz path zwraca w formie obiektu xts wartości łączne kapitalizacji spółek we wszystkich sektorach (kolumny), dla poszczególnych miesięcy. W przypadku braków notowań uzupełnia je w tył, potem wprzód. Wartości przeliczone są do miliardów Euro na podstawie wartości końcowej kapitalizacji, notowań poszczególnych spółek w zbiorze danych oraz notowań FX. Domyślnie prezentowane są wyliczenia dla całego zbioru spółek a uzupełnienie parametru wybranego państwa zawęża reultat geograficznie. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru path ich wersje zapisane na dysku użytkowanika (F.DB.1)
+
+###Test: TF.STS.1
+
+```{r}
+#Wywołanie funkcji bez parametrów
+sIndices()
+```
+
+```{r}
+#Wywołanie funkcji bez parametrów
+sIndices("USA")
+```
+
+```{r}
+#Wywołanie funkcji z opcionalnym parametrem country
+sIndices("USA")
+```
+
+```{r}
+#Zapisywanie danych kolekcji do bieżącego folderu za pomocą funkcji saveData.
+saveData("C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+#Wywołanie funkcji z opconalnym parametrem country i path
+sIndices("USA","C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+```
+
+```{r}
+#Wywołanie funkcji dla 8 państw
+sIndices("France")
+sIndices("USA")
+sIndices("Italy")
+sIndices("Belgium")
+sIndices("Portugal")
+sIndices("Germany")
+sIndices("Spain")
+sIndices("Netherlands")
+```
+
+```{r}
+dataFrance<-sIndices("France")
+dataUSA<-sIndices("USA")
+dataItaly<-sIndices("Italy")
+dataBelgium<-sIndices("Belgium")
+dataPortugal<-sIndices("Portugal")
+dataGermany<-sIndices("Germany")
+dataSpain<-sIndices("Spain")
+dataNetherlands<-sIndices("Netherlands")
+dataAll<-sIndices()
+#Dodawanie kolumny Basic Materials
+sum_dataFrance<-sum(dataFrance$`Basic Materials`)
+sum_dataUSA<-sum(dataUSA$`Basic Materials`)
+sum_dataItaly<-sum(dataItaly$`Basic Materials`)
+sum_dataBelgium<-sum(dataBelgium$`Basic Materials`)
+sum_dataPortugal<-sum(dataPortugal$`Basic Materials`)
+sum_dataGermany<-sum(dataGermany$`Basic Materials`)
+sum_dataSpain<-sum(dataSpain$`Basic Materials`)
+sum_dataNetherlands<-sum(dataNetherlands$`Basic Materials`)
+sum_dataAll<-sum(dataAll$`Basic Materials`)
+sum_dataCountries<-sum_dataFrance+sum_dataUSA+sum_dataItaly+sum_dataBelgium+sum_dataPortugal+sum_dataGermany+sum_dataSpain+sum_dataNetherlands
+wynik1<-paste(sum_dataCountries," - Rezultat sumowania wartości z kolumny Basic Materials, wywołując funkcję dla każdego kraju osobno")
+wynik2<-paste(sum_dataAll," - Rezultat sumowania kolumny dla funkcji bez parametrów")
+print(wynik1)
+print(wynik2)
+variables_list <- ls()
+rm(list = variables_list)
+rm(variables_list)
+
+#Rezultat sumowania kolumny Basic Materials jest identyczny dla wywołania funkcji z parametrami jak i bez.
+```
+
+```{r}
+#Odłączenie biblioteki
+detach("package:CurrentSectors", unload = TRUE)
+#Odinstalowywanie biblioteki
+remove.packages("CurrentSectors")
+```

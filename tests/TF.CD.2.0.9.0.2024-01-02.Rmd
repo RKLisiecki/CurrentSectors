@@ -1,0 +1,148 @@
+---
+title: "TF.CD.2.0.9.0.2023-01-02"
+author: "Michał_Bartkiewicz"
+date: "2024-01-02"
+output: html_document
+---
+
+```{r}
+#Wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+#Załadowanie pakietu devtools
+library(devtools)
+#Instalacja najnowszej wersji biblioteki CurrentSectors
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+#Załadowanie biblioteki 
+library(CurrentSectors)
+#Ponowne wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+```
+#Wymagania funkcjonalne 
+
+##Zapytanie za pośrednictwem funkcji help(object) o zbiór danych lub funkcję biblioteki powoduje wyświetlenie treści odpowiedniego pliku pomocy.
+
+###Test TF.CD.2
+
+#?CurrentSectors
+```{r}
+?CurrentSectors
+```
+#help(CurrentSectors)
+```{r}
+help(CurrentSectors)
+```
+
+#?printSectorStructure
+```{r}
+?printSectorStructure
+```
+#help(printSectorStructure)
+```{r}
+help(printSectorStructure)
+```
+
+#?listCompanies
+```{r}
+?listCompanies
+```
+#help(listCompanies)
+```{r}
+help(listCompanies)
+```
+
+#?saveData
+```{r}
+?saveData
+```
+#help(saveData)
+```{r}
+help(saveData)
+```
+
+#?updateData
+```{r}
+?updateData
+```
+#help(updateData)
+```{r}
+help(updateData)
+```
+
+#?sStructure
+```{r}
+?sStructure
+```
+#help(sStructure)
+```{r}
+help(sStructure)
+```
+
+#?sStructureChart
+```{r}
+?sStructureChart
+```
+#help(sStructureChart)
+```{r}
+help(sStructureChart)
+```
+
+#?sIndices
+```{r}
+?sIndices
+```
+#help(sIndices)
+```{r}
+help(sIndices)
+```
+
+#?sIndicesChart
+```{r}
+?sIndicesChart
+```
+#help(sIndicesChart)
+```{r}
+help(sIndicesChart)
+```
+
+#?sIndicesTRCompChart
+```{r}
+?sIndicesTRCompChart
+```
+#help(sIndicesTRCompChart)
+```{r}
+help(sIndicesTRCompChart)
+```
+
+#?company_database 
+```{r}
+?company_database 
+```
+#help(company_database)
+```{r}
+help(company_database)
+```
+
+#?company_timeseries 
+```{r}
+?company_timeseries 
+```
+#help(company_timeseries)
+```{r}
+help(company_timeseries)
+```
+
+#?forex_timeseries
+```{r}
+?forex_timeseries  
+```
+#help(forex_timeseries)
+```{r}
+help(forex_timeseries)
+```
+
+```{r}
+#Odłączenie biblioteki
+detach("package:CurrentSectors", unload = TRUE)
+#Odinstalowywanie biblioteki
+remove.packages("CurrentSectors")
+```

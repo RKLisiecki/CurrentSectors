@@ -1,0 +1,65 @@
+---
+title: "TF.SS.2.0.9.0.2023-01-02"
+author: "Michał_Bartkiewicz"
+date: "2024-01-02"
+output: html_document
+---
+
+```{r}
+#Wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+#Załadowanie pakietu devtools
+library(devtools)
+#Instalacja najnowszej wersji biblioteki CurrentSectors
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+#Załadowanie biblioteki 
+library(CurrentSectors)
+#Ponowne wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+```
+
+#Wymagania funkcjonalne 
+
+##Funkcja z obligatoryjnym parametrem nazwy państwa (country) oraz opcjonalnym path zwraca wykres powierzchniowy (pie-chart) udziałów poszczególnych sektorów w kapitalizacji łącznej spółek w państwie. Wykres zawiera informatywny tytuł. Domyślnie funkcja wykorzystuje dane dołączone a przy ustaleniu wartości parametru path ich wersje zapisane na dysku użytkownika (F.DB.1)
+
+###Test: TF.SS.2
+
+```{r}
+#Ładowanie plików pomocy
+?sStructureChart
+```
+
+```{r}
+# Wywołanie funkcji z nieprawidowy parametrem "country". Oczekiwany rezultat: "Calculation was unsuccesful Plot creation was unsuccesful".
+sStructureChart("San Escobar")
+```
+
+```{r}
+# Wywołanie funkcji z nieprawidowy parametrem "path". Oczekiwany rezultat: "Calculation was unsuccesful Plot creation was unsuccesful".
+sStructureChart("USA","dasdafsdgsdg")
+```
+
+```{r}
+#Wywołanie funkcji z prawidłowym parametrem "country" dla każdego z krajów dostępnych w bibliotece. Rezultatem funkcji powinno być wyświetlenie wykresu udziałów poszczególnych sektorów w kapitalizacji łącznej spółek w państwie.
+sStructureChart("France")
+sStructureChart("USA")
+sStructureChart("Italy")
+sStructureChart("Belgium")
+sStructureChart("Portugal")
+sStructureChart("Germany")
+sStructureChart("Spain")
+sStructureChart("Netherlands")
+```
+
+```{r}
+#Wywołanie funkcji z prawidłowym parametrem "country" z dodatkowym argumentem ścieżki. Rezultatem funkcji powinno być wyświetlenie wykresu udziałów poszczególnych sektorów w kapitalizacji łącznej spółek w państwie.
+sStructureChart("France")
+sStructureChart("France","C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+````
+
+```{r}
+#Odłączenie biblioteki
+detach("package:CurrentSectors", unload = TRUE)
+#Odinstalowywanie biblioteki
+remove.packages("CurrentSectors")
+```

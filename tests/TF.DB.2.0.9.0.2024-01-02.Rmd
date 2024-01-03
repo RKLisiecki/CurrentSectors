@@ -1,0 +1,93 @@
+---
+title: "TF.DB.2.0.9.0.2024-01-02"
+author: "Michał_Bartkiewicz"
+date: "2024-01-02"
+output: html_document
+---
+
+```{r}
+#Wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+#Załadowanie pakietu devtools
+library(devtools)
+#Instalacja najnowszej wersji biblioteki CurrentSectors
+install_github("RKLisiecki/CurrentSectors", force = TRUE)
+#Załadowanie biblioteki 
+library(CurrentSectors)
+#Ponowne wywołanie funkcji wbudowanej sessionInfo().
+sessionInfo()
+```
+
+#Wymagania funkcjonalne 
+
+##Funkcja z obligatoryjnym parametrem ścieżki dyskowej (jak w F.DB.1) aktualizuje szeregi czasowe notowań uprzednio zapisanych przez użytkownika funkcją saveData(path).
+
+###Test: TF.DB.2
+
+```{r}
+#Ocena adekwatności plików pomocy.
+?updateData
+```
+
+```{r}
+#Zapisywanie danych kolekcji do bieżącego folderu za pomocą funkcji saveData.
+saveData("C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+```
+
+```{r}
+# Załadowanie i sprawdzenie plików
+load(file = "company_database.rda")
+load(file = "company_timeseries.rda")
+load(file = "forex_timeseries.rda")
+#Ograniczenie do 200 firm (zachowując tę samą kolejność w obu plikach).
+company_database <- company_database[1:200,]
+company_timeseries <- company_timeseries[, 1:200]
+# Skrócenie szeregów czasowych
+company_timeseries <- company_timeseries[1:(nrow(company_timeseries)-5)]
+forex_timeseries <- forex_timeseries[1:(nrow(forex_timeseries)-5)]
+```
+
+```{r}
+# Zapis zmodyfikowanych plików
+save(company_database, file = "company_database.rda")
+save(company_timeseries, file = "company_timeseries.rda")
+save(forex_timeseries, file = "forex_timeseries.rda")
+# Usunięcie obiektów ze środowiska
+rm(company_database, company_timeseries, forex_timeseries)
+```
+
+```{r}
+# Ponowne załadowanie i sprawdzenie plików
+load(file = "company_database.rda")
+load(file = "company_timeseries.rda")
+load(file = "forex_timeseries.rda")
+```
+
+```{r}
+#Kolejne usunięcie obiektów ze środowiska
+rm(company_database, company_timeseries, forex_timeseries)
+```
+
+```{r}
+#Próby użycia funkcji z błędnymi parametrami ścieżki dyskowej. Oczekiwany komunikat: "User data update unsuccesful."
+updateData(NA)
+updateData(NULL)
+updateData("C#V#TR!")
+```
+
+```{r}
+#Wywołanie funkcji z poprawnym parametrem. Pliki zostały skrócone i zapisane w katalogu bieżącym. Ścieżka dostępu jest przechowywana w zmiennej path. Oczekiwany wynik: komunikaty informacyjne oraz zaktualizowane dane w zapisanych plikach.
+updateData("C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+```
+
+```{r}
+#Uruchomienie funkcji z właściwym parametrem, ale gdy pliki są już aktualne. Oczekiwany wynik to brak aktualizacji i odpowiedni komunikat informacyjny.
+updateData("C:/Users/michal.bartkiewicz/Desktop/Rzeczy/Studia/!semestr3/Inżynieria oprogramowania/CurrentSectors-master/tests/saveData/")
+```
+
+```{r}
+#Odłączenie biblioteki
+detach("package:CurrentSectors", unload = TRUE)
+#Odinstalowywanie biblioteki
+remove.packages("CurrentSectors")
+```
