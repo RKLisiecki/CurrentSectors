@@ -12,6 +12,8 @@
 #'
 #' @returns [no explicit returns, just a console printout]
 #' @examples
+#'
+#' # This function is intentionally slow
 #' printSectorStructure()
 #'
 #' # Author: R. Karol Lisiecki
@@ -57,6 +59,6 @@ printSectorStructure <- function() {
       Sys.sleep(0.01)
     }
     cat("\n")
-    Sys.sleep(0.02)
+    Sys.sleep(0.01)
   }
 }

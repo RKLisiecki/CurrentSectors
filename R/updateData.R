@@ -11,8 +11,10 @@
 #' @param path A character vector
 #'
 #' @examples
+#' # Updates datasets stored in the current working directory
+#' # this is commented because it takes up to fifteen minutes.
 #'
-#' updateData("./")  # Updates datasets stored in the current working directory
+#' # updateData("./")
 #'
 #'
 #' # Author: R. Karol Lisiecki

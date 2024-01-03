@@ -20,8 +20,10 @@ it's status can be observed by watching the progress bar.
 User needs to wait until the beginning of the next month to update EOM data.
 }
 \examples{
+# Updates datasets stored in the current working directory
+# this is commented because it takes up to fifteen minutes.
 
-updateData("./")  # Updates datasets stored in the current working directory
+# updateData("./")
 
 
 # Author: R. Karol Lisiecki

@@ -22,6 +22,8 @@ Function prints the result slowly to simulate
 an actual printout.
 }
 \examples{
+
+# This function is intentionally slow
 printSectorStructure()
 
 # Author: R. Karol Lisiecki
