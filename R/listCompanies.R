@@ -11,7 +11,7 @@
 #' Market Cap Threshold value (in Euros), below which the companies
 #' should be cut off from the desired result.
 #'
-#' #' The optional `path` parameter can point to the directory with saved versions
+#' The optional `path` parameter can point to the directory with saved versions
 #' of the library datasets (with the saveData() function) to use them instead of
 #' the built-in datasets.
 #'
@@ -57,7 +57,7 @@ listCompanies <- function(country, sector=NULL, industry=NULL, market_cap_thresh
       }
       result$Bn_EUR_MarketCap <- result$EURMarketCap/1e9
       result <- result[, c(1:4, 6:7, 9)]
-      result <- result[order(result$bn_EUR_MarketCap, decreasing = TRUE), ]
+      result <- result[order(result$Bn_EUR_MarketCap, decreasing = TRUE), ]
       if(sum(is.na(result)) > 0 | nrow(result) < 1)
         result <- "Nothing here."
     },

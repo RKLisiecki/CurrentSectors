@@ -71,7 +71,7 @@ The CurrentSectors package for R Empowers drilling down stock quotes across sect
 
 \code{company_timeseries}
 
- - historical monthly stock prices of the above stocks
+ - historical monthly stock prices of the above stocks since January 2018
 
 
 \code{forex_timeseries}

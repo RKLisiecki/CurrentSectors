@@ -38,7 +38,7 @@ The optional `market_cap_thresh` parameter signifies
 Market Cap Threshold value (in Euros), below which the companies
 should be cut off from the desired result.
 
-#' The optional `path` parameter can point to the directory with saved versions
+The optional `path` parameter can point to the directory with saved versions
 of the library datasets (with the saveData() function) to use them instead of
 the built-in datasets.
 }
