@@ -27,7 +27,7 @@ the built-in datasets.
 \examples{
 
 sIndicesChart()  # Chart for all countries combined, using the inbuilt data
-sIndicesChart(country = "Italy", path = "./")  # Calculate for Italy using data saved in the current working directory
+sIndicesChart(country = "Netherlands", path = "./")  # Calculate for the Netherlands using data saved in the current working directory
 
 
 # Author: R. Karol Lisiecki
