@@ -49,12 +49,11 @@ updateData <- function(path) {
         symbols <- colnames(company_timeseries)
         dates <- seq(from = last_date, to = today, by = "days")
         mendings <- endpoints(dates, on = "months")
-        # miesięczne szeregi z YF są datowane na pierwszy dz. mes.
-        fdays <- dates[mendings+1]
-        fdays <- fdays[2:(length(fdays)-2)]
+        #
+        fdays <- dates[mendings]
+        fdays <- fdays[2:(length(fdays)-1)]
         # w bazie biblioteki używany jest ost. dz. mies. lub notowań w mies.
-        dbdates <- dates[mendings]
-        dbdates <- dbdates[2:(length(dbdates)-1)]
+        dbdates <- fdays
 
         corematrix <- matrix(NA, nrow = length(dbdates), ncol = length(symbols))
         colnames(corematrix) <- symbols
@@ -62,16 +61,17 @@ updateData <- function(path) {
         cat("Progress: the bottom dotted line elongates when every 10% of the data is downloaded\n")
         cat("..........\n")
         checkpoint <- floor(length(symbols)/10)
+        start_day <- as.Date(paste(substr(as.character(fdays[1]), start = 1, stop = 8), "01", sep = ""))
         for(i in 1:length(symbols)) {
-          symbol <- colnames(corematrix)[1]
-          data <- getSymbols(symbol, from = fdays[1], to = fdays[length(fdays)]+1, periodicity = "monthly", auto.assign = FALSE)
-          corematrix[, i] <- data[, 4]
+          symbol <- colnames(corematrix)[i]
+          data <- getSymbols(symbol, from = start_day, to = fdays[length(fdays)]+1, periodicity = "monthly", auto.assign = FALSE)
+          # Yahoo Finance sometimes dates monthlies on the beginnings, sometimes on endings of months
+          ifelse(start(data) < start_day, corematrix[, i] <- as.numeric(data[2:nrow(data), 4]), corematrix[, i] <- as.numeric(data[, 4]))
           if(i%%checkpoint==0){
             cat(".")
           }
         }
         added_ts <- xts(corematrix, order.by = dbdates)
-
         cat("Updating FX rates.\n")
         added_fx <- getSymbols("EURUSD=X", from = fdays[1], to = fdays[length(fdays)]+1, periodicity = "monthly", auto.assign = FALSE)
         added_fx <- added_fx[,4]
