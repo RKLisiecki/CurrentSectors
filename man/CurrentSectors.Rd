@@ -9,7 +9,8 @@ stock quotes analysis across sectors, industries and regions.
 }
 \details{
 The CurrentSectors package for R Empowers drilling down stock quotes across sectors and countries, facilitates comparative analysis of stock market performance across sectors and countries, streamlines sector structure analysis and sector performance analysis, simplifies bulk data ingestion from Yahoo Finance.
-\section{Included functions} {
+
+Included functions:
 \code{printSectorStructure()}
  - prints the nested structure of sectors and industries
 \code{listCompanies(country, sector=NULL, industry=NULL, market_cap_thresh = NULL)}
@@ -29,8 +30,9 @@ The CurrentSectors package for R Empowers drilling down stock quotes across sect
 \code{sIndicesTRCompChart(country1, country2, sector1, sector2, path=NULL)}
  - plots sector total returns comparison time series for two sectors
 \code{TAReport(country, sector, path=NULL)}
- - calculates a technical analysis repor}
-\section{Included datasets} {
+ - calculates a technical analysis report
+
+Included datasets:
 \code{company_database}
  - company overviews for 2025 European and American stocks
 \code{company_timeseries}
@@ -38,8 +40,6 @@ The CurrentSectors package for R Empowers drilling down stock quotes across sect
 \code{forex_timeseries}
  - historical monthly bid prices of EURUSD
 }
-}
 \author{
 R. Karol Lisiecki
 }
-\keyword {package}
