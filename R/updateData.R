@@ -65,7 +65,7 @@ updateData <- function(path) {
         for(i in 1:length(symbols)) {
           symbol <- colnames(corematrix)[i]
           data <- getSymbols(symbol, from = start_day, to = fdays[length(fdays)]+1, periodicity = "monthly", auto.assign = FALSE)
-          ifelse(start(data) < start_day, corematrix[, i] <- as.numeric(data[2:nrow(data), 4]), corematrix[, i] <- as.numeric(data[, 4]))
+          ifelse(start(data) < start_day, corematrix[, i] <- as.numeric(data[2:(1+nrow(corematrix)), 4]), corematrix[, i] <- as.numeric(data[1:nrow(corematrix), 4]))
           if(i%%checkpoint==0){
             cat(".")
           }
