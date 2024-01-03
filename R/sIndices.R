@@ -64,10 +64,9 @@ sIndices <- function (country=NULL, path=NULL) {
           forex_ts <- NULL
         }
       }
-
-      # uzupełnienie pustych notowań WSTECZ - nocb a potem wprzód
-      company_ts <- na.locf(company_ts, fromLast = TRUE)
-      company_ts <- na.locf(company_ts, fromLast = FALSE)
+      # uzupełnienie pustych notowań
+      company_ts <- na.locf(na.locf(company_ts), fromLast = TRUE)
+      forex_ts <- na.locf(na.locf(forex_ts), fromLast = TRUE)
       # wyliczenie notowan relatywnych do ostatniego
       last_v <- tail(company_ts, 1)
       last_vm <- matrix(rep(last_v, nrow(company_ts)),

@@ -18,7 +18,7 @@
 #' @examples
 #'
 #' sStructureChart("USA")  # Sector market cap shares chart of American companies
-#' sStructureChart(country = "Italy", path = "./")  # Sector market cap shares chart of Italian companies, calculated from user saved datasets
+#' sStructureChart(country = "Italy", path = "./")  # Sector market cap shares chart of Italian companies, calculated using user saved datasets
 #'
 #'
 #' # Author: R. Karol Lisiecki

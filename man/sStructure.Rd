@@ -30,7 +30,7 @@ in a given country, in billions of EUR.
 \examples{
 
 sStructure("USA")  # Sector market cap shares of American companies
-sStructure(country = "Italy", path = "./")  # Sector market cap shares of Italian companies, calculated from user saved datasets
+sStructure(country = "Italy", path = "./")  # Sector market cap shares of Italian companies, calculated with user saved datasets
 
 
 # Author: R. Karol Lisiecki

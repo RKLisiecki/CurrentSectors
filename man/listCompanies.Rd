@@ -2,13 +2,14 @@
 % Please edit documentation in R/listCompanies.R
 \name{listCompanies}
 \alias{listCompanies}
-\title{Produces a dataframe of companies from a given country and sector or industry}
+\title{Produces a detailed dataframe of companies from a given country and sector or industry}
 \usage{
 listCompanies(
   country,
   sector = NULL,
   industry = NULL,
-  market_cap_thresh = NULL
+  market_cap_thresh = NULL,
+  path = NULL
 )
 }
 \arguments{
@@ -21,10 +22,11 @@ listCompanies(
 \item{market_cap_thresh}{A number}
 }
 \value{
-A dataframe of companies with 6 columns (Name, Ticker, Sector, Industry, Currency)
+A dataframe of companies with 6 columns
+(Name, Ticker, Sector, Industry, Currency, NoOfEmployees, Bn_EUR_MarketCap)
 }
 \description{
-listCompanies() produces a dataframe
+listCompanies() produces a detailed dataframe
 of the companies of a given
 country and sector (or industry) crossection.
 }
@@ -35,6 +37,10 @@ either the `sector` or the `industry`.
 The optional `market_cap_thresh` parameter signifies
 Market Cap Threshold value (in Euros), below which the companies
 should be cut off from the desired result.
+
+#' The optional `path` parameter can point to the directory with saved versions
+of the library datasets (with the saveData() function) to use them instead of
+the built-in datasets.
 }
 \examples{
 

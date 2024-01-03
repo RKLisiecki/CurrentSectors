@@ -17,29 +17,29 @@ The CurrentSectors package for R Empowers drilling down stock quotes across sect
  - prints the nested structure of sectors and industries
 
 
-\code{listCompanies(country, sector=NULL, industry=NULL, market_cap_thresh = NULL)}
+\code{listCompanies(country, sector=NULL, industry=NULL, market_cap_thresh = NULL, path = NULL)}
 
- - produces a dataframe of companies from a given country and sector or industry
+ - produces a detailed dataframe of companies from a given country and sector or industry
 
 
 \code{saveData(path)}
 
- - saves library datasets as Rda files in an existing users's directory
+ - saves library datasets as R data files in an existing users's directory
 
 
 \code{updateData(path)}
 
- - updates the library's datasets, which were saved in user's directory on disk
+ - updates the library's datasets, which were saved in a user's directory
 
 
 \code{sStructure(country, path=NULL)}
 
- - calculate shares of each sector's market cap. in total market cap.
+ - calculate shares of each sector's market capitalization in total market cap.
 
 
 \code{sStructureChart(country, path=NULL)}
 
- - plots a pie-chart of sector market cap shares for companies in a given country
+ - plots a pie-chart of sector market cap. shares for companies in a given country
 
 
 \code{sIndices(country=NULL, path=NULL)}
@@ -59,7 +59,7 @@ The CurrentSectors package for R Empowers drilling down stock quotes across sect
 
 \code{TAReport(country, sector, path=NULL)}
 
- - calculates a technical analysis report
+ - calculates a technical analysis report for companies in a given country and sector crossection
 
 
 \strong{Included datasets:}
