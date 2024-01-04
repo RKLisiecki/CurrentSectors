@@ -66,7 +66,7 @@ The CurrentSectors package for R Empowers drilling down stock quotes across sect
 
 \code{company_database}
 
- - company overviews for 2025 European and American stocks
+ - company overviews for 2024 European and American stocks
 
 
 \code{company_timeseries}

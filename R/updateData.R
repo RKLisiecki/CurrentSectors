@@ -36,7 +36,6 @@ updateData <- function(path) {
       company_database <- company_database
       company_timeseries <- company_timeseries
       forex_timeseries <- forex_timeseries
-
       # sprawdzenie podatności na aktualizację
       last_date <- index(company_timeseries)[nrow(company_timeseries)]
       last_month <- format(last_date, "%m")
@@ -54,7 +53,6 @@ updateData <- function(path) {
         fdays <- fdays[2:(length(fdays)-1)]
         # w bazie biblioteki używany jest ost. dz. mies. lub notowań w mies.
         dbdates <- fdays
-
         corematrix <- matrix(NA, nrow = length(dbdates), ncol = length(symbols))
         colnames(corematrix) <- symbols
         cat("Updating time series. This will take a while.\n")
@@ -62,22 +60,29 @@ updateData <- function(path) {
         cat("..........\n")
         checkpoint <- floor(length(symbols)/10)
         start_day <- as.Date(paste(substr(as.character(fdays[1]), start = 1, stop = 8), "01", sep = ""))
+        end_day <- fdays[length(fdays)]+1
         for(i in 1:length(symbols)) {
           symbol <- colnames(corematrix)[i]
-          data <- getSymbols(symbol, from = start_day, to = fdays[length(fdays)]+1, periodicity = "monthly", auto.assign = FALSE)
-          ifelse(start(data) < start_day, corematrix[, i] <- as.numeric(data[2:(1+nrow(corematrix)), 4]), corematrix[, i] <- as.numeric(data[1:nrow(corematrix), 4]))
+          data <- internalGS(symbol = symbol, from = start_day, to = end_day)
+          if(!is.null(data)) {
+            if(start(data) < start_day) {
+              corematrix[, i] <- as.numeric(data[2:(1+nrow(corematrix)), 4])
+            } else {
+              corematrix[, i] <- as.numeric(data[1:nrow(corematrix), 4])
+            }
+          }
           if(i%%checkpoint==0){
             cat(".")
           }
         }
         added_ts <- xts(corematrix, order.by = dbdates)
-
+        # seperate missing values imputation
+        added_ts <- na.locf(na.locf(added_ts), fromLast = TRUE)
         cat("Updating FX rates.\n")
         added_fx <- getSymbols("EURUSD=X", from = fdays[1], to = fdays[length(fdays)]+1, periodicity = "monthly", auto.assign = FALSE)
         added_fx <- added_fx[,4]
         added_fx <- xts(added_fx, order.by = dbdates)
         forex_timeseries <- rbind(forex_timeseries, added_fx)
-
         cat("Updating company database.\n")
         company_database$TimSeriesEnd <- dbdates[length(dbdates)]
         for(i in 1:length(symbols)) {
@@ -86,6 +91,10 @@ updateData <- function(path) {
           fxrate <- as.numeric(forex_timeseries[length(forex_timeseries)])
           currentquote <- added_ts[nrow(added_ts), i]
           lastquote <- company_timeseries[nrow(company_timeseries), i]
+          if(is.na(currentquote)) {
+            currentquote <- lastquote
+            added_ts[, i] <- lastquote
+          }
           ratio <- as.numeric(currentquote)/as.numeric(lastquote)
           newmarketcap <- ratio * company_database$MarketCap[company_database$Ticker==symbol]
           company_database$MarketCap[company_database$Ticker==symbol] <- newmarketcap
@@ -99,11 +108,9 @@ updateData <- function(path) {
           }
         }
         company_timeseries <- rbind(company_timeseries, added_ts)
-
         save(company_database, file = paste(path, "company_database.rda", sep = ""))
         save(company_timeseries, file = paste(path, "company_timeseries.rda", sep = ""))
         save(forex_timeseries, file = paste(path, "forex_timeseries.rda", sep = ""))
-
         info <- "\nData has been succesfully updated."
       }
     },

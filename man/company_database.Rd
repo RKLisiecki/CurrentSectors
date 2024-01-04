@@ -5,7 +5,7 @@
 \alias{company_database}
 \title{Company overviews of 2025 European and American stocks (from Yahoo Finance)}
 \format{
-A data frame with 2025 rows and 13 columns:
+A data frame with 2024 rows and 13 columns:
 \describe{
   \item{Name}{Company name on one of the Euronext exchanges or Polish brokerage houses}
   \item{Ticker}{Company stock ticker used to collect data from Yahoo Finance}
@@ -29,7 +29,7 @@ A data frame with 2025 rows and 13 columns:
 company_database
 }
 \description{
-A subset of Yahoo Finance profile and statistics data of 1162 US and
+A subset of Yahoo Finance profile and statistics data of 1161 US and
 863 European companies (BE, DE, ES, FR, IT, NL, PT)
 plus metadata about their stock timeseries in this library
 plus their USD and EUR market cap values after conversion

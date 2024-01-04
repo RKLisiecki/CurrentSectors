@@ -3,7 +3,7 @@
 \docType{data}
 \name{company_timeseries}
 \alias{company_timeseries}
-\title{Historical stock prices - monthly closes of 2025 stocks (from Yahoo Finance)}
+\title{Historical stock prices - monthly closes of 2024 stocks (from Yahoo Finance)}
 \format{
 An xts object with 71 rows from 2018-01-31 to 2023/11/30 and 2026 columns:
 \describe{
